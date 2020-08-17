@@ -1,11 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@font-face {
-	font-family: 'Montserrat';
-	font-style: normal;
-	font-weight: 100;
-	src: local('Montserrat Thin'), local('Montserrat-Thin'), url(https://fonts.gstatic.com/s/montserrat/v12/JTUQjIg1_i6t8kCHKm45_QpRxC7mw9c.woff2) format('woff2');
-	unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
 .mediaViewInfo {
 	--web-view-name: Web 1280 – 6;
 	--web-view-id: Web_1280__6;
