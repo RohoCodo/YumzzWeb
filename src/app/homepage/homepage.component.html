@@ -1,20 +1,10 @@
-<!-- <div id="Web_1280__6"> -->
-<section class="hero is-fullheight">
+<section class="hero is-fullheight" style="background: #F3F1EE;">
   <div class="hero-head">
     <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="#">
           <p class="title">Yumzz</p>
         </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <a class="button is-black">
-              <strong>Early Access</strong>
-            </a>
-          </div>
-        </div>
       </div>
     </nav>
   </div>
@@ -29,11 +19,9 @@
             Bringing back the fun of
             dining out in Pleasanton, CA.
           </h2>
-
           <a class="pl-6">
             <img src="../assets/appstore_black.svg" />
           </a>
-
         </div>
         <div class="column is-6">
           <figure class="image px-6 py-6">
@@ -44,79 +32,79 @@
     </div>
   </div>
 </section>
-
 <section class="hero is-success is-fullheight" style="background: #FF8859;">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered is-vcentered">
-        <div class="column is-6">
-          <figure class="image">
-            <img src="../assets/screenshots/home.png" style="max-height: 500px; width: auto; margin: auto;"/>
-          </figure>
-        </div>
         <div class="column is-5">
           <h1 class="title has-text-black" style="font-size: 2.5rem;">
-            Dine safely and support restaurants in Pleasanton, CA
+            Local food, even closer
           </h1>
-          <br>
           <h2 class="subtitle has-text-black">
-            We partner with ultra-local restaurants to empower communities and small businesses.
+            Yumzz helps you find and support local restaurants in
+            your area.
           </h2>
+          <br>
+          <a class="tab is-active" data-anchor="step#home" href="#">
+            <h3 class="title is-4 has-text-black"> Dine out to your local restaurants </h3>
+            <p class="subtitle has-text-black"> Get to know the best food near you and order safely
+              from the app.
+            </p>
+          </a>
+          <br>
+          <a class=tab data-anchor="step#dish" href="#">
+            <h3 class="title is-4 has-text-black"> Discover your new favorite dishes </h3>
+            <p class="subtitle has-text-black"> Find new restaurants and get recommendations based on
+              your favorite dishes. </p>
+          </a>
+          <br>
+          <a class=tab data-anchor="step#order" href="#">
+            <h3 class="title is-4 has-text-black"> Streamlined ordering experience </h3>
+            <p class="subtitle has-text-black"> Browse the menu, order more food, and call for a
+              waiter from your fingertips. </p>
+          </a>
+        </div>
+        <div class="column is-6 has-text-centered">
+          <div class="screens has-text-centered">
+            <div class="screen is-active" data-id="step#home">
+              <img src="/assets/images/screens/home.png" style="max-height: 500px; width: auto; margin: auto;" />
+            </div>
+            <div class="screen" data-id="step#dish">
+              <img src="/assets/images/screens/dish_detail.png" style="max-height: 500px; width: auto; margin: auto;" />
+            </div>
+            <div class="screen" data-id="step#order">
+              <img src="/assets/images/screens/order.png" style="max-height: 500px; width: auto; margin: auto;" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <section class="hero is-success is-fullheight" style="background: #F3F1EE;">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered is-vcentered">
-        <div class="column is-6">
-          <figure class="image">
-            <img src="../assets/screenshots/dish_detail.png" style="max-height: 500px; width: auto; margin: auto;"/>
-          </figure>
-        </div>
-        <div class="column is-5">
-          <h1 class="title has-text-black" style="font-size: 2.5rem;">
-            The best food at your fingertips
-          </h1>
-          <br>
-          <h2 class="subtitle has-text-black">
-            Discover new restaurants, explore local trends, or order your favorite food.
-          </h2>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero is-success is-fullheight" style="background: #a3baff;">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered is-vcentered">
-        <div class="column is-6">
-          <figure class="image py-6">
-            <div class="box" style="padding: 0rem; max-width: 400px; margin: auto; border-radius: 8px;">
-              <img src="../assets/food.jpg" style="border-radius: 8px;" />
-            </div>
-          </figure>
-        </div>
-
         <div class="column is-5">
           <h1 class="title has-text-black" style="font-size: 2.5rem;">
             Get valuable insights and data for your business
           </h1>
           <br>
           <h2 class="subtitle has-text-black">
-            Find out what your customers buy and get feedback. Get advice to improve your logistics and growth.
+            You own a restaurant? Discover what your customers buy and get feedback. Get advice to improve your logistics and growth.
           </h2>
+        </div>
+        <div class="column is-6">
+          <figure class="image">
+            <div class="box" style="padding: 0rem; max-width: 400px; margin: auto; border-radius: 8px;">
+              <img src="../assets/food.jpg" style="border-radius: 8px;" />
+            </div>
+          </figure>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <footer class="footer">
   <div class="container">
     <div class="columns is-multiline is-vcentered">
@@ -128,30 +116,30 @@
             </strong>
           </p>
           <form [formGroup]="this.form" (ngSubmit)="onSubmit()">
-          <div class="field">
-            <div class="columns is-centered">
-              <div class="column is-4">
-                <div class="control">
-                  <input class="input" type="text" placeholder="email@address.com" formControlName="email">
+            <div class="field">
+              <div class="columns is-centered">
+                <div class="column is-4">
+                  <div class="control">
+                    <input class="input" type="text" placeholder="email@address.com" formControlName="email">
+                  </div>
                 </div>
-              </div>
-              <div class="column is-2">
-                <div class="control">
-                  <button class="button is-black" (click)="onSubmit()">Sign up</button>
+                <div class="column is-2">
+                  <div class="control">
+                    <button class="button is-black" (click)="onSubmit()">Sign up</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </form>
+        </div>
+      </div>
+      <div class="column is-12">
+        <div class="content has-text-centered">
+          <p>
+            © 2020 Yumzz All rights reserved.
+          </p>
+        </div>
       </div>
     </div>
-    <div class="column is-12">
-      <div class="content has-text-centered">
-        <p>
-          © 2020 Yumzz All rights reserved.
-        </p>
-      </div>
-    </div>
-  </div>
   </div>
 </footer>
