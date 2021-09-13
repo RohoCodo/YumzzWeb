@@ -1,14 +1,27 @@
 {
   "hosting": {
     "public": "dist/yumzz",
-    "rewrites": [{
-      "source": "**",
-      "destination": "/index.html"
-    }],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ]
+  },
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["3VUUCS34BU.com.ARMenu.VirtualMenu"],
+        "components": []
+      }
+    ],
+    "appclips": {
+      "apps": ["3VUUCS34BU.com.ARMenu.VirtualMenu.Clip"]
+    }
   }
 }
