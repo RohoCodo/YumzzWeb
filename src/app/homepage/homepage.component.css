@@ -1,0 +1,33 @@
+.screen {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.screen img {
+  transform: translateY(5%);
+  transition: transform 700ms ease;
+}
+
+.screen.is-active {
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  display: contents;
+}
+
+.screen.is-active img {
+  transform: translateY(0);
+}
+
+.tab {
+  opacity: 0.5;
+}
+
+.tab > * {
+  opacity: inherit;
+}
+
+.tab.is-active {
+  opacity: 1;
+}
