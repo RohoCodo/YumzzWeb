@@ -1,6 +1,12 @@
 {
   "hosting": {
     "public": "dist/yumzz",
+    "headers": [
+          {
+            "source": "/apple-app-site-association",
+            "headers": [{"key": "Content-Type", "value": "application/json"}]
+          }
+        ],
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,16 +18,5 @@
         "destination": "/index.html"
       }
     ]
-  },
-  "applinks": {
-    "details": [
-      {
-        "appIDs": ["3VUUCS34BU.com.ARMenu.VirtualMenu"],
-        "components": []
-      }
-    ],
-    "appclips": {
-      "apps": ["3VUUCS34BU.com.ARMenu.VirtualMenu.Clip"]
-    }
   }
 }
