@@ -7,7 +7,7 @@
             "headers": [{"key": "Content-Type", "value": "application/json"}]
           }
         ],
-    "appAssociation": "AUTO",
+    "appAssociation": "NONE",
     "ignore": [
       "firebase.json",
       "**/.*",

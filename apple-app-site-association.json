@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["3VUUCS34BU.com.ARMenu.VirtualMenu"],
+        "components": []
+      }
+    ],
+    "appclips": {
+      "apps": ["3VUUCS34BU.com.ARMenu.VirtualMenu.Clip"]
+    }
+  }
+}
