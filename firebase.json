@@ -7,7 +7,7 @@
             "headers": [{"key": "Content-Type", "value": "application/json"}]
           }
         ],
-    "appAssociation": "NONE",
+    "appAssociation": "AUTO",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -16,9 +16,10 @@
     "rewrites": [
       {
         "source": "**",
+        "dynamicLinks": true,
         "destination": "/index.html"
       },
-      { "source": "/car_moto/**", "dynamicLinks": true }, { "source": "/lgv_pcv/**", "dynamicLinks": true }, { "source": "/adi/**", "dynamicLinks": true }
+      { "source": "/apple-app-site-association", "dynamicLinks": true }
     ]
   }
 }

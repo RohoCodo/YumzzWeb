@@ -2,8 +2,13 @@
   <div class="hero-head">
     <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="#">
+        <a class="navbar-item" routerLink="/home">
           <p class="title">Yumzz</p>
+        </a>
+      </div>
+      <div class="navbar-selection">
+        <a class="navbar-item" routerLink="/privacy">
+          <p class="title">Privacy Policy</p>
         </a>
       </div>
     </nav>
@@ -17,7 +22,7 @@
           </h1>
           <h2 class="subtitle pl-6" style="font-size: 2rem;">
             Bringing back the fun of
-            dining out in Pleasanton, CA.
+            dining out in the Bay Area.
           </h2>
           <a class="pl-6">
             <img src="../assets/appstore_black.svg" />
@@ -46,9 +51,8 @@
           </h2>
           <br>
           <a class="tab is-active" data-anchor="step#home" href="#">
-            <h3 class="title is-4 has-text-black"> Dine out to your local restaurants </h3>
-            <p class="subtitle has-text-black"> Get to know the best food near you and order safely
-              from the app.
+            <h3 class="title is-4 has-text-black"> Dine out at your local restaurants </h3>
+            <p class="subtitle has-text-black"> Get to know the best food near you, order safely, and call the waiter from your phone through our app!
             </p>
           </a>
           <br>
@@ -112,7 +116,7 @@
         <div class="content has-text-centered is-centered pb-6">
           <p>
             <strong>
-              Sign up for early access
+              Sign up for early access. If you have any questions, please contact us at yumzzapp@gmail.com!
             </strong>
           </p>
           <form [formGroup]="this.form" (ngSubmit)="onSubmit()">

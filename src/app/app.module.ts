@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
@@ -12,7 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, RegisterPageComponent, HomepageComponent],
+  declarations: [AppComponent, RegisterPageComponent, HomepageComponent, PrivacyPolicyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
