@@ -31,3 +31,9 @@
 .tab.is-active {
   opacity: 1;
 }
+
+nav-item {
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+}
