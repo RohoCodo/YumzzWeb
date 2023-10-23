@@ -1,0 +1,222 @@
+[debug] [2023-10-23T04:58:44.391Z] ----------------------------------------------------------------------
+[debug] [2023-10-23T04:58:44.392Z] Command:       /usr/local/bin/node /Users/rohantyagi/.npm-global/bin/firebase deploy --only functions
+[debug] [2023-10-23T04:58:44.392Z] CLI Version:   12.7.0
+[debug] [2023-10-23T04:58:44.393Z] Platform:      darwin
+[debug] [2023-10-23T04:58:44.393Z] Node Version:  v18.15.0
+[debug] [2023-10-23T04:58:44.398Z] Time:          Mon Oct 23 2023 10:28:44 GMT+0530 (India Standard Time)
+[debug] [2023-10-23T04:58:44.398Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-10-23T04:58:44.452Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.452Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"destination"}
+[debug] [2023-10-23T04:58:44.453Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.454Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.454Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.454Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.454Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-10-23T04:58:44.454Z] Field ".hosting.rewrites[0]" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-10-23T04:58:44.454Z] Field ".hosting" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-10-23T04:58:44.454Z] Field ".hosting" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-10-23T04:58:44.458Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-10-23T04:58:44.459Z] > authorizing via signed-in user (yumzzapp@gmail.com)
+[debug] [2023-10-23T04:58:44.459Z] [iam] checking project virtual-menu-59b9e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-10-23T04:58:44.461Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions [none]
+[debug] [2023-10-23T04:58:44.461Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions x-goog-quota-user=projects/virtual-menu-59b9e
+[debug] [2023-10-23T04:58:44.461Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-10-23T04:58:45.866Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions 200
+[debug] [2023-10-23T04:58:45.866Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-10-23T04:58:45.867Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/virtual-menu-59b9e/serviceAccounts/virtual-menu-59b9e@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-10-23T04:58:45.867Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/virtual-menu-59b9e/serviceAccounts/virtual-menu-59b9e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-10-23T04:58:46.924Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/virtual-menu-59b9e/serviceAccounts/virtual-menu-59b9e@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-10-23T04:58:46.924Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/virtual-menu-59b9e/serviceAccounts/virtual-menu-59b9e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'virtual-menu-59b9e'...
+[info] 
+[info] i  deploying functions 
+[debug] [2023-10-23T04:58:46.928Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e [none]
+[debug] [2023-10-23T04:58:48.169Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e 200
+[debug] [2023-10-23T04:58:48.170Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e {"projectId":"virtual-menu-59b9e","projectNumber":"224436038053","displayName":"Virtual Menu","name":"projects/virtual-menu-59b9e","resources":{"hostingSite":"virtual-menu-59b9e","realtimeDatabaseInstance":"virtual-menu-59b9e","storageBucket":"virtual-menu-59b9e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_0533ecba-a692-4dfd-8ffd-2744a6b6ddce"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-10-23T04:58:48.172Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-10-23T04:58:48.172Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/virtual-menu-59b9e
+[debug] [2023-10-23T04:58:48.175Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-10-23T04:58:48.175Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/virtual-menu-59b9e
+[debug] [2023-10-23T04:58:48.176Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudbuild.googleapis.com [none]
+[debug] [2023-10-23T04:58:48.176Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudbuild.googleapis.com x-goog-quota-user=projects/virtual-menu-59b9e
+[debug] [2023-10-23T04:58:48.178Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/artifactregistry.googleapis.com [none]
+[debug] [2023-10-23T04:58:48.178Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/artifactregistry.googleapis.com x-goog-quota-user=projects/virtual-menu-59b9e
+[debug] [2023-10-23T04:58:49.385Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/runtimeconfig.googleapis.com 200
+[debug] [2023-10-23T04:58:49.386Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-10-23T04:58:49.632Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudfunctions.googleapis.com 200
+[debug] [2023-10-23T04:58:49.633Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-10-23T04:58:49.634Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudbuild.googleapis.com 200
+[debug] [2023-10-23T04:58:49.635Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-10-23T04:58:49.654Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/artifactregistry.googleapis.com 200
+[debug] [2023-10-23T04:58:49.654Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/virtual-menu-59b9e/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-10-23T04:58:49.654Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/adminSdkConfig [none]
+[debug] [2023-10-23T04:58:51.012Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/adminSdkConfig 200
+[debug] [2023-10-23T04:58:51.013Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/adminSdkConfig {"projectId":"virtual-menu-59b9e","databaseURL":"https://virtual-menu-59b9e.firebaseio.com","storageBucket":"virtual-menu-59b9e.appspot.com","locationId":"us-central"}
+[debug] [2023-10-23T04:58:51.014Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/virtual-menu-59b9e/configs [none]
+[debug] [2023-10-23T04:58:52.191Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/virtual-menu-59b9e/configs 200
+[debug] [2023-10-23T04:58:52.191Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/virtual-menu-59b9e/configs {}
+[debug] [2023-10-23T04:58:52.194Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-10-23T04:58:54.056Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-10-23T04:58:54.056Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[warn] ⚠  functions: You are using an old version of firebase-functions SDK (3.9.0). Please update firebase-functions SDK to >=3.20.0 
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/rohantyagi/Desktop/landing-website/functions (27.15 KB) for uploading 
+[debug] [2023-10-23T04:58:54.183Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/-/functions [none]
+[debug] [2023-10-23T04:58:56.494Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/-/functions 200
+[debug] [2023-10-23T04:58:56.494Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/-/functions {"functions":[{"name":"projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail","httpsTrigger":{"url":"https://us-central1-virtual-menu-59b9e.cloudfunctions.net/addBusinessEmail","securityLevel":"SECURE_OPTIONAL"},"status":"ACTIVE","entryPoint":"addBusinessEmail","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"virtual-menu-59b9e@appspot.gserviceaccount.com","updateTime":"2023-03-20T03:48:17.904Z","versionId":"13","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"c918e645473408d3b44cd81d9cb5e4506a061297"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-615119301633.us-central1.cloudfunctions.appspot.com/51cd50e1-a607-49b4-8f15-63bbcf7f76f2.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"virtual-menu-59b9e\",\"databaseURL\":\"https://virtual-menu-59b9e.firebaseio.com\",\"storageBucket\":\"virtual-menu-59b9e.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"virtual-menu-59b9e","EVENTARC_CLOUD_EVENT_SOURCE":"projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail"},"runtime":"nodejs10","ingressSettings":"ALLOW_ALL","buildId":"f64cef72-e4ee-41ac-8f5c-80d78aac50f9","buildName":"projects/224436038053/locations/us-central1/builds/f64cef72-e4ee-41ac-8f5c-80d78aac50f9","dockerRegistry":"ARTIFACT_REGISTRY"},{"name":"projects/virtual-menu-59b9e/locations/us-central1/functions/helloHttp","httpsTrigger":{"url":"https://us-central1-virtual-menu-59b9e.cloudfunctions.net/helloHttp","securityLevel":"SECURE_OPTIONAL"},"status":"ACTIVE","entryPoint":"helloHttp","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"virtual-menu-59b9e@appspot.gserviceaccount.com","updateTime":"2020-11-15T00:23:51.516Z","versionId":"5","labels":{"deployment-tool":"cli-gcloud"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-aa3ed4f3-d98d-46bf-b35d-2432cb14e188/2cbef110-994a-4c1f-b0b9-f10e6b241a8e.zip","runtime":"nodejs12","ingressSettings":"ALLOW_ALL","buildId":"133c8fb6-5e04-4b6a-972f-a8ebfe2696e5","dockerRegistry":"CONTAINER_REGISTRY"}]}
+[debug] [2023-10-23T04:58:56.497Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/virtual-menu-59b9e/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-10-23T04:58:57.963Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/virtual-menu-59b9e/locations/-/functions 200
+[debug] [2023-10-23T04:58:57.963Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/virtual-menu-59b9e/locations/-/functions {}
+[debug] [2023-10-23T04:58:57.970Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e [none]
+[debug] [2023-10-23T04:58:59.065Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e 200
+[debug] [2023-10-23T04:58:59.066Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e {"projectId":"virtual-menu-59b9e","projectNumber":"224436038053","displayName":"Virtual Menu","name":"projects/virtual-menu-59b9e","resources":{"hostingSite":"virtual-menu-59b9e","realtimeDatabaseInstance":"virtual-menu-59b9e","storageBucket":"virtual-menu-59b9e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_0533ecba-a692-4dfd-8ffd-2744a6b6ddce"}
+[debug] [2023-10-23T04:58:59.068Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-10-23T04:58:59.068Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-10-23T04:59:00.593Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-10-23T04:59:00.593Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-615119301633.us-central1.cloudfunctions.appspot.com/4766577a-a332-4460-a59a-c256c5fd3967.zip?GoogleAccessId=service-224436038053@gcf-admin-robot.iam.gserviceaccount.com&Expires=1698038940&Signature=TfLJZn%2BC9hBP4cdzOQu7bopBGf%2B9g7nnFaBN0bHvuLRTSs%2BXDpPlWK2ERqkLe9PNxDgAQ3kF30sFdRn2kFl13ZcXDRwTydjGl84JGvpHbTZVLrtdW6sxWNUlon6ZVSCPFHQmenO5xP0O%2BlxRrz5X5LmLdO8MlrhOBfgt6PB4O%2Bm4AWio0FxfPGYawNuXPlCxKQ7IY0fsliO2IennplyaWJrQvCiD%2B%2BwzdTwwbXzx0X0t3Yj%2FeuEbvi5egoqNMQB%2FZwxJUsw6OM%2BgvArm5PuZBzf6MWXMVmAT5AUpHQ27iN78Y%2FLaIWeL6unha57p4968NYLXhK0RgEP9UqmEBoFf5A%3D%3D"}
+[debug] [2023-10-23T04:59:00.595Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-615119301633.us-central1.cloudfunctions.appspot.com/4766577a-a332-4460-a59a-c256c5fd3967.zip GoogleAccessId=service-224436038053%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1698038940&Signature=TfLJZn%2BC9hBP4cdzOQu7bopBGf%2B9g7nnFaBN0bHvuLRTSs%2BXDpPlWK2ERqkLe9PNxDgAQ3kF30sFdRn2kFl13ZcXDRwTydjGl84JGvpHbTZVLrtdW6sxWNUlon6ZVSCPFHQmenO5xP0O%2BlxRrz5X5LmLdO8MlrhOBfgt6PB4O%2Bm4AWio0FxfPGYawNuXPlCxKQ7IY0fsliO2IennplyaWJrQvCiD%2B%2BwzdTwwbXzx0X0t3Yj%2FeuEbvi5egoqNMQB%2FZwxJUsw6OM%2BgvArm5PuZBzf6MWXMVmAT5AUpHQ27iN78Y%2FLaIWeL6unha57p4968NYLXhK0RgEP9UqmEBoFf5A%3D%3D
+[debug] [2023-10-23T04:59:00.595Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-615119301633.us-central1.cloudfunctions.appspot.com/4766577a-a332-4460-a59a-c256c5fd3967.zip [stream]
+[debug] [2023-10-23T04:59:02.337Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-615119301633.us-central1.cloudfunctions.appspot.com/4766577a-a332-4460-a59a-c256c5fd3967.zip 200
+[debug] [2023-10-23T04:59:02.337Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-615119301633.us-central1.cloudfunctions.appspot.com/4766577a-a332-4460-a59a-c256c5fd3967.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: updating Node.js 10 (1st Gen) function addBusinessEmail(us-central1)... 
+[debug] [2023-10-23T04:59:02.345Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken%2CbuildEnvironmentVariables
+[debug] [2023-10-23T04:59:02.345Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail {"name":"projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail","sourceUploadUrl":"https://storage.googleapis.com/uploads-615119301633.us-central1.cloudfunctions.appspot.com/4766577a-a332-4460-a59a-c256c5fd3967.zip?GoogleAccessId=service-224436038053@gcf-admin-robot.iam.gserviceaccount.com&Expires=1698038940&Signature=TfLJZn%2BC9hBP4cdzOQu7bopBGf%2B9g7nnFaBN0bHvuLRTSs%2BXDpPlWK2ERqkLe9PNxDgAQ3kF30sFdRn2kFl13ZcXDRwTydjGl84JGvpHbTZVLrtdW6sxWNUlon6ZVSCPFHQmenO5xP0O%2BlxRrz5X5LmLdO8MlrhOBfgt6PB4O%2Bm4AWio0FxfPGYawNuXPlCxKQ7IY0fsliO2IennplyaWJrQvCiD%2B%2BwzdTwwbXzx0X0t3Yj%2FeuEbvi5egoqNMQB%2FZwxJUsw6OM%2BgvArm5PuZBzf6MWXMVmAT5AUpHQ27iN78Y%2FLaIWeL6unha57p4968NYLXhK0RgEP9UqmEBoFf5A%3D%3D","entryPoint":"addBusinessEmail","runtime":"nodejs10","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"29cddf50faea11bb094f20e38ab5b370324008e1"},"httpsTrigger":{"securityLevel":"SECURE_OPTIONAL"},"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"virtual-menu-59b9e\",\"databaseURL\":\"https://virtual-menu-59b9e.firebaseio.com\",\"storageBucket\":\"virtual-menu-59b9e.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"virtual-menu-59b9e","EVENTARC_CLOUD_EVENT_SOURCE":"projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail"},"availableMemoryMb":256,"buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}}
+[debug] [2023-10-23T04:59:03.711Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail 403
+[debug] [2023-10-23T04:59:03.711Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/virtual-menu-59b9e/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
+[warn] ⚠  functions: failed to update function projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail 
+[error] Failed to update function projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail
+[debug] [2023-10-23T04:59:03.721Z] Total Function Deployment time: 1373
+[debug] [2023-10-23T04:59:03.721Z] 1 Functions Deployed
+[debug] [2023-10-23T04:59:03.721Z] 1 Functions Errored
+[debug] [2023-10-23T04:59:03.721Z] 0 Function Deployments Aborted
+[debug] [2023-10-23T04:59:03.721Z] Average Function Deployment time: 1372
+[info] 
+[info] Functions deploy had errors with the following functions:
+	addBusinessEmail(us-central1)
+[debug] [2023-10-23T04:59:04.767Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
+[info] i  functions: cleaning up build files... 
+[debug] [2023-10-23T04:59:04.769Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/virtual-menu-59b9e/locations/us-central1/repositories/gcf-artifacts/packages/add_business_email [none]
+[debug] [2023-10-23T04:59:04.771Z] >>> [apiv2][query] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list [none]
+[debug] [2023-10-23T04:59:06.067Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/virtual-menu-59b9e/locations/us-central1/repositories/gcf-artifacts/packages/add_business_email 403
+[debug] [2023-10-23T04:59:06.067Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/virtual-menu-59b9e/locations/us-central1/repositories/gcf-artifacts/packages/add_business_email {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #virtual-menu-59b9e by visiting https://console.developers.google.com/billing/enable?project=virtual-menu-59b9e then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=virtual-menu-59b9e"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"service":"artifactregistry.googleapis.com","consumer":"projects/virtual-menu-59b9e"}}]}}
+[debug] [2023-10-23T04:59:06.089Z] <<< [apiv2][status] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list 403
+[debug] [2023-10-23T04:59:06.089Z] <<< [apiv2][body] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list {"errors":[{"code":"DENIED","message":"Failed to read tags for host 'us.gcr.io', repository '/v2/virtual-menu-59b9e/gcf/us-central1/tags/list'"}]}
+[debug] [2023-10-23T04:59:06.089Z] Failed docker command with error  HTTP Error: 403, Unknown Error {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"DENIED","message":"Failed to read tags for host 'us.gcr.io', repository '/v2/virtual-menu-59b9e/gcf/us-central1/tags/list'"}],"error":{"message":"Unknown Error"}},"response":{"statusCode":403}},"exit":1,"message":"HTTP Error: 403, Unknown Error","status":403}
+[debug] [2023-10-23T04:59:06.093Z] >>> [apiv2][query] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list [none]
+[debug] [2023-10-23T04:59:07.425Z] <<< [apiv2][status] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list 403
+[debug] [2023-10-23T04:59:07.426Z] <<< [apiv2][body] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list {"errors":[{"code":"DENIED","message":"Failed to read tags for host 'us.gcr.io', repository '/v2/virtual-menu-59b9e/gcf/us-central1/tags/list'"}]}
+[debug] [2023-10-23T04:59:07.426Z] Failed docker command with error  HTTP Error: 403, Unknown Error {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"DENIED","message":"Failed to read tags for host 'us.gcr.io', repository '/v2/virtual-menu-59b9e/gcf/us-central1/tags/list'"}],"error":{"message":"Unknown Error"}},"response":{"statusCode":403}},"exit":1,"message":"HTTP Error: 403, Unknown Error","status":403}
+[debug] [2023-10-23T04:59:07.529Z] >>> [apiv2][query] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list [none]
+[debug] [2023-10-23T04:59:08.791Z] <<< [apiv2][status] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list 403
+[debug] [2023-10-23T04:59:08.791Z] <<< [apiv2][body] GET https://us.gcr.io/v2/virtual-menu-59b9e/gcf/us-central1/tags/list {"errors":[{"code":"DENIED","message":"Failed to read tags for host 'us.gcr.io', repository '/v2/virtual-menu-59b9e/gcf/us-central1/tags/list'"}]}
+[debug] [2023-10-23T04:59:08.792Z] Failed docker command with error  HTTP Error: 403, Unknown Error {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"DENIED","message":"Failed to read tags for host 'us.gcr.io', repository '/v2/virtual-menu-59b9e/gcf/us-central1/tags/list'"}],"error":{"message":"Unknown Error"}},"response":{"statusCode":403}},"exit":1,"message":"HTTP Error: 403, Unknown Error","status":403}
+[warn] ⚠  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at
+	https://console.cloud.google.com/artifacts/docker/virtual-menu-59b9e/us-central1/gcf-artifacts
+	https://console.cloud.google.com/gcr/images/virtual-menu-59b9e/us/gcf 
+[debug] [2023-10-23T04:59:08.793Z] Functions deploy failed.
+[debug] [2023-10-23T04:59:08.793Z] {
+  "endpoint": {
+    "id": "addBusinessEmail",
+    "project": "virtual-menu-59b9e",
+    "region": "us-central1",
+    "entryPoint": "addBusinessEmail",
+    "platform": "gcfv1",
+    "runtime": "nodejs10",
+    "httpsTrigger": {},
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"virtual-menu-59b9e\",\"databaseURL\":\"https://virtual-menu-59b9e.firebaseio.com\",\"storageBucket\":\"virtual-menu-59b9e.appspot.com\",\"locationId\":\"us-central\"}",
+      "GCLOUD_PROJECT": "virtual-menu-59b9e",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail"
+    },
+    "codebase": "default",
+    "availableMemoryMb": 256,
+    "securityLevel": "SECURE_OPTIONAL",
+    "targetedByOnly": false,
+    "hash": "29cddf50faea11bb094f20e38ab5b370324008e1",
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    }
+  },
+  "op": "update",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail"
+    },
+    "exit": 1,
+    "message": "Failed to update function projects/virtual-menu-59b9e/locations/us-central1/functions/addBusinessEmail",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 403,
+            "message": "Unable to retrieve the repository metadata for projects/virtual-menu-59b9e/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+            "status": "PERMISSION_DENIED"
+          }
+        },
+        "response": {
+          "statusCode": 403
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 403, Unable to retrieve the repository metadata for projects/virtual-menu-59b9e/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+      "status": 403
+    },
+    "status": 403,
+    "code": 403
+  }
+}
+[debug] [2023-10-23T04:59:09.940Z] Error: Failed to update function addBusinessEmail in region us-central1
+    at /Users/rohantyagi/.npm-global/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:51:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.updateV1Function (/Users/rohantyagi/.npm-global/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:347:32)
+    at async Fabricator.updateEndpoint (/Users/rohantyagi/.npm-global/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:151:13)
+    at async handle (/Users/rohantyagi/.npm-global/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:88:17)
+[error] 
+[error] Error: There was an error deploying functions

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 declare var $ : any;
 
 @Component({selector: 'app-homepage', templateUrl: './homepage.component.html', styleUrls: ['./homepage.component.css']})
@@ -9,7 +9,8 @@ export class HomepageComponent implements OnInit {
 
     onSubmit() {
         let data = this.form.value;
-
+        this.form.reset();
+        alert("We will get back to you shortly!");
         return new Promise < any > ((resolve, reject) => {
             this
                 .db
@@ -18,6 +19,7 @@ export class HomepageComponent implements OnInit {
                 .set(data)
                 .then((res) => {}, (err) => reject(err));
         });
+
     }
 
     constructor(private db : AngularFirestore) {}

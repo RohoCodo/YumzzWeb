@@ -121,5 +121,8 @@
         }
       }
     }},
-  "defaultProject": "yumzz"
+  "defaultProject": "yumzz",
+  "cli": {
+    "analytics": false
+  }
 }
