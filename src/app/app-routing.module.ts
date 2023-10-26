@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { FoodWastePageComponent } from './foodwaste-page/foodwaste.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   { path: 'home', component: HomepageComponent},
-  { path:'register', component: RegisterPageComponent },
+  { path:'foodwaste', component: FoodWastePageComponent },
   {path:'privacy', component: PrivacyPolicyComponent},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
