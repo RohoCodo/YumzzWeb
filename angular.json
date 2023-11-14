@@ -120,8 +120,8 @@
           }
         }
       }
-    }},
-  "defaultProject": "yumzz",
+    }
+  },
   "cli": {
     "analytics": false
   }

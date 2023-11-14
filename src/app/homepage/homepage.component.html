@@ -24,7 +24,7 @@
       <div class="columns is-centered is-vcentered">
         <div class="column is-6" style="padding: 0;">
           <h1 class="title is-spaced pl-6" style="font-size: 3.6rem;">
-            Food Advertising. Reinvented.
+            Food Advertising Enhanced.
           </h1>
           <h2 class="subtitle pl-6" style="font-size: 2rem;">
             Tools to increase traffic to your website, delivery apps, social media, and restaurant through AR - the future of advertising
@@ -80,8 +80,10 @@
               <img src="/assets/DeliveryOrders.png" style="max-height: 500px; width: auto; margin: auto;" />
             </div>
             <div class="screen" data-id="step#order">
-                <p class="subtitle has-text-black"> Click this photo on your phone to try AR yourself</p>
-              <a href = "gs://virtual-menu-59b9e.appspot.com/AR-Model/Example/first.usdz" rel = "ar">
+              <a rel = "ar" href = "https://storage.googleapis.com/virtual-menu-59b9e.appspot.com/AR-Model/Example/first.usdz">
+              <p class="subtitle has-text-black"> Click this photo on your phone to try AR yourself</p>
+              </a>
+              <a rel = "ar" ar-scale = "fixed" href = "https://storage.googleapis.com/virtual-menu-59b9e.appspot.com/AR-Model/Example/first.usdz">
                 <img src="/assets/AR-Example-Large.png" style="max-height: 500px; width: auto; margin: auto;" />
               </a>
             </div>
@@ -122,10 +124,10 @@
         <div class="content has-text-centered is-centered pb-6">
           <p>
             <strong>
-              Sign up for early access before your competitors. If you have any questions, please contact us at yumzzapp@gmail.com!
+              Sign up for early access before your competitors. If you have any questions, please contact us at sales@yumzztech.co!
             </strong>
           </p>
-          <form [formGroup]="this.form" (ngSubmit)="onSubmit()">
+          <!-- <form [formGroup]="this.form" (ngSubmit)="onSubmit()">
             <div class="field">
               <div class="columns is-centered">
                 <div class="column is-4">
@@ -140,7 +142,7 @@
                 </div>
               </div>
             </div>
-          </form>
+          </form> -->
         </div>
       </div>
       <div class="column is-12">
