@@ -1,0 +1,101 @@
+[debug] [2023-11-14T22:19:29.221Z] ----------------------------------------------------------------------
+[debug] [2023-11-14T22:19:29.222Z] Command:       /usr/local/bin/firebase /Users/rohantyagi/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2023-11-14T22:19:29.223Z] CLI Version:   12.6.1
+[debug] [2023-11-14T22:19:29.223Z] Platform:      darwin
+[debug] [2023-11-14T22:19:29.223Z] Node Version:  v16.16.0
+[debug] [2023-11-14T22:19:29.230Z] Time:          Tue Nov 14 2023 14:19:29 GMT-0800 (Pacific Standard Time)
+[debug] [2023-11-14T22:19:29.230Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-14T22:19:29.346Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.347Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.348Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.348Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.348Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.348Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-11-14T22:19:29.348Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-11-14T22:19:29.349Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-11-14T22:19:29.350Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"dynamicLinks"}
+[debug] [2023-11-14T22:19:29.350Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"destination"}
+[debug] [2023-11-14T22:19:29.351Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.351Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.351Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.351Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.352Z] Object ".hosting.rewrites[0]" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-11-14T22:19:29.352Z] Field ".hosting.rewrites[0]" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-11-14T22:19:29.352Z] Field ".hosting" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-11-14T22:19:29.352Z] Field ".hosting" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-11-14T22:19:29.359Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-14T22:19:29.361Z] > authorizing via signed-in user (yumzzapp@gmail.com)
+[debug] [2023-11-14T22:19:29.361Z] [iam] checking project virtual-menu-59b9e for permissions ["firebase.projects.get"]
+[debug] [2023-11-14T22:19:29.362Z] > refreshing access token with scopes: []
+[debug] [2023-11-14T22:19:29.362Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-11-14T22:19:29.362Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-14T22:19:29.637Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-11-14T22:19:29.640Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-14T22:19:29.659Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions [none]
+[debug] [2023-11-14T22:19:29.660Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions x-goog-quota-user=projects/virtual-menu-59b9e
+[debug] [2023-11-14T22:19:29.660Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-11-14T22:19:29.997Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions 200
+[debug] [2023-11-14T22:19:30.000Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/virtual-menu-59b9e:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-11-14T22:19:30.002Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e [none]
+[debug] [2023-11-14T22:19:30.482Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e 200
+[debug] [2023-11-14T22:19:30.486Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e {"projectId":"virtual-menu-59b9e","projectNumber":"224436038053","displayName":"Virtual Menu","name":"projects/virtual-menu-59b9e","resources":{"hostingSite":"virtual-menu-59b9e","realtimeDatabaseInstance":"virtual-menu-59b9e","storageBucket":"virtual-menu-59b9e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_e94cfa9a-3ede-4b7f-9785-14ede5b3567d"}
+[info] 
+[info] === Serving from '/Users/rohantyagi/Desktop/YumzzWebsite/landing-website'...
+[info] 
+[debug] [2023-11-14T22:19:30.511Z] defaultcredentials: writing to file /Users/rohantyagi/.config/firebase/yumzzapp_gmail_com_application_default_credentials.json
+[debug] [2023-11-14T22:19:30.516Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/virtual-menu-59b9e/sites 
+[debug] [2023-11-14T22:19:30.523Z] Setting GAC to /Users/rohantyagi/.config/firebase/yumzzapp_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/rohantyagi/.config/firebase/yumzzapp_gmail_com_application_default_credentials.json"}}
+[debug] [2023-11-14T22:19:30.524Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/adminSdkConfig [none]
+[debug] [2023-11-14T22:19:31.126Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/adminSdkConfig 200
+[debug] [2023-11-14T22:19:31.127Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/adminSdkConfig {"projectId":"virtual-menu-59b9e","databaseURL":"https://virtual-menu-59b9e.firebaseio.com","storageBucket":"virtual-menu-59b9e.appspot.com","locationId":"us-central"}
+[debug] [2023-11-14T22:19:31.319Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/virtual-menu-59b9e/sites 200
+[debug] [2023-11-14T22:19:31.321Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/virtual-menu-59b9e/sites {"sites":[{"name":"projects/virtual-menu-59b9e/sites/virtual-menu-59b9e","defaultUrl":"https://virtual-menu-59b9e.web.app","appId":"1:224436038053:web:31d1ef7108e07921b8604c","type":"DEFAULT_SITE"},{"name":"projects/virtual-menu-59b9e/sites/yumzz-appclip","defaultUrl":"https://yumzz-appclip.web.app","appId":"1:224436038053:web:5219739f2131004db8604c","type":"USER_SITE"},{"name":"projects/virtual-menu-59b9e/sites/yumzz-ar","defaultUrl":"https://yumzz-ar.web.app","type":"USER_SITE"}]}
+[debug] [2023-11-14T22:19:31.322Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/webApps/1:224436038053:web:31d1ef7108e07921b8604c/config [none]
+[debug] [2023-11-14T22:19:31.951Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/webApps/1:224436038053:web:31d1ef7108e07921b8604c/config 200
+[debug] [2023-11-14T22:19:31.951Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e/webApps/1:224436038053:web:31d1ef7108e07921b8604c/config {"projectId":"virtual-menu-59b9e","appId":"1:224436038053:web:31d1ef7108e07921b8604c","databaseURL":"https://virtual-menu-59b9e.firebaseio.com","storageBucket":"virtual-menu-59b9e.appspot.com","locationId":"us-central","apiKey":"AIzaSyBL5QRn9t-LKvJZJM-LxGWukckerv8OFNc","authDomain":"virtual-menu-59b9e.firebaseapp.com","messagingSenderId":"224436038053","measurementId":"G-DBGXXY409E"}
+[debug] [2023-11-14T22:19:31.963Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e [none]
+[debug] [2023-11-14T22:19:32.362Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e 200
+[debug] [2023-11-14T22:19:32.363Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/virtual-menu-59b9e {"projectId":"virtual-menu-59b9e","projectNumber":"224436038053","displayName":"Virtual Menu","name":"projects/virtual-menu-59b9e","resources":{"hostingSite":"virtual-menu-59b9e","realtimeDatabaseInstance":"virtual-menu-59b9e","storageBucket":"virtual-menu-59b9e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_e94cfa9a-3ede-4b7f-9785-14ede5b3567d"}
+[info] i  functions: Watching "/Users/rohantyagi/Desktop/YumzzWebsite/landing-website/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/rohantyagi/Desktop/YumzzWebsite/landing-website/functions\" for Cloud Functions..."}}
+[info] i  hosting[virtual-menu-59b9e]: Serving hosting files from: dist/yumzz {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist/yumzz\u001b[22m"}}
+[info] ✔  hosting[virtual-menu-59b9e]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
+[debug] [2023-11-14T22:19:32.548Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2023-11-14T22:19:33.610Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-11-14T22:19:33.610Z] Building nodejs source
+[debug] [2023-11-14T22:19:33.611Z] Failed to find version of module node: reached end of search path /Users/rohantyagi/Desktop/YumzzWebsite/landing-website/functions/node_modules
+[warn] ⚠  functions: You've requested "node" version "10", but the standalone Firebase CLI comes with bundled Node "16". 
+[info] ✔  functions: To use a different Node.js version, consider removing the standalone Firebase CLI and switching to "firebase-tools" on npm. 
+[debug] [2023-11-14T22:19:33.614Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-11-14T22:19:33.634Z] Found firebase-functions binary at '/Users/rohantyagi/Desktop/YumzzWebsite/landing-website/node_modules/.bin/firebase-functions'
+[info] Serving at port 8760
+
+[debug] [2023-11-14T22:19:34.230Z] Got response from /__/functions.yaml {"endpoints":{},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: . {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: ."}}
+[info] i  hosting: 127.0.0.1 - - [14/Nov/2023:22:20:04 +0000] "GET /__/firebase/init.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [14/Nov/2023:22:20:04 +0000] \"GET /__/firebase/init.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [14/Nov/2023:22:22:02 +0000] "GET /__/firebase/init.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [14/Nov/2023:22:22:02 +0000] \"GET /__/firebase/init.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36\""}}
