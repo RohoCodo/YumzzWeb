@@ -2,11 +2,11 @@
   "hosting": {
     "public": "dist/yumzz",
     "headers": [
-          {
-            "source": "/apple-app-site-association",
-            "headers": [{"key": "Content-Type", "value": "application/json"}]
-          }
-        ],
+      {
+        "source": "/apple-app-site-association",
+        "headers": [{"key": "Content-Type", "value": "application/json"}]
+      }
+    ],
     "appAssociation": "AUTO",
     "ignore": [
       "firebase.json",
@@ -21,5 +21,11 @@
       },
       { "source": "/apple-app-site-association", "dynamicLinks": true }
     ]
-  }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "runtime": "nodejs14"
+    }
+  ]
 }
