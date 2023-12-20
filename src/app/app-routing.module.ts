@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { FoodWastePageComponent } from './foodwaste-page/foodwaste.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import {SignInAdminPageComponent} from './admin-sign-in-page/admin-sign-in-page.component';
+import {SignUpAdminPageComponent} from './admin-sign-up-page/admin-sign-up-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomepageComponent},
   { path:'foodwaste', component: FoodWastePageComponent },
   {path:'privacy', component: PrivacyPolicyComponent},
+  {path: 'admin', component: SignInAdminPageComponent},
+  {path: 'admin-signup', component: SignUpAdminPageComponent},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 

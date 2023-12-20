@@ -1,0 +1,93 @@
+<section class="hero is-fullheight" style="background: #F3F1EE;">
+    <div class="hero-head">
+      <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" routerLink="/home" routerLinkActive="active">
+            <p class="title"> Yumzz</p>
+          </a>
+        </div>
+        <div class="navbar-selection ml-auto">
+          <a class="navbar-item ml-auto" routerLink="/home" routerLinkActive="active">
+            <p class="nav-item">AR Advertising</p>
+          </a>
+        </div>
+        <div class="navbar-selection ml-auto">
+          <a class="navbar-item" routerLink="/privacy" routerLinkActive="active">
+            <p class="nav-item">Privacy Policy</p>
+          </a>
+        </div>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered is-vcentered">
+          <div class="column is-6" style="padding: 0;">
+            <h1 class="title is-spaced pl-6" style="font-size: 3.6rem;">
+              <form id="signInForm" style="border:1px solid #ccc">
+                <div class="container">
+                  <label for="uname"><b>Restaurant Name</b></label>
+                  <input type="text" placeholder="Enter Restaurant Name" name="uname" id="restaurantName" required>
+    
+                  <label for="psw"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+    
+                  <button type="button" onclick="signIn()">Login</button>
+                  <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
+                </div>
+    
+                <div class="container" style="background-color:#f1f1f1">
+                  <button type="button" class="cancelbtn">Cancel</button>
+                  <a href="#">
+                    <span class="psw">Forgot password?</span>
+                  </a>
+                </div>
+                <a class="navbar-item" routerLink="/admin-signup" routerLinkActive="active">
+                  <span class="psw">Sign Up</span>
+                </a>
+              </form>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Function to handle the sign-in process
+      function signIn() {
+        // Get form data
+        const restaurantName = document.getElementById('restaurantName').value;
+        const password = document.getElementById('password').value;
+
+        const signInFunction = firebase.functions().httpsCallable('signin');
+
+
+
+        signInFunction({restaurantName: restaurantName, password: password})
+        .then((result) => {
+            console.log(result.data.message);
+            // Optionally, you can redirect the user to a new page or perform other actions after successful signup
+          })
+          .catch((error) => {
+            console.error('Error during sign up:', error.message);
+            // Handle errors (e.g., display an error message to the user)
+          });
+        // Call Firebase Authentication service for sign-in
+      //   firebase.auth().signInWithEmailAndPassword(username, password)
+      //     .then((userCredential) => {
+      //       // User signed in successfully
+      //       const user = userCredential.user;
+      //       console.log('User signed in:', user);
+    
+      //       // Optionally, you can redirect the user to a new page or perform other actions after successful sign-in
+      //     })
+      //     .catch((error) => {
+      //       console.error('Error during sign-in:', error.message);
+      //       // Handle errors (e.g., display an error message to the user)
+      //     });
+      }
+    </script>
+    
+</section>
