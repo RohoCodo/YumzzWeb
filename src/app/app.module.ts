@@ -21,11 +21,12 @@ import { FileService } from './services/file.service';
 import { FileOperationComponent } from './components/file-operation/file-operation.component';
 import {AdminRecipesComponent} from './admin-recipes/admin-recipes.component';
 import {FormsModule} from '@angular/forms';
+import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent, ForgotPasswordPageComponent, AdminHomePageComponent, AdminRecipesComponent],
+  declarations: [AppComponent, FileUploadPageComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent, ForgotPasswordPageComponent, AdminHomePageComponent, AdminRecipesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

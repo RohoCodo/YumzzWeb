@@ -1,0 +1,57 @@
+<nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/home" routerLinkActive="active">
+      <p class="title"> Yumzz</p>
+    </a>
+  </div>
+  <div class="navbar-selection ml-auto">
+    <a class="navbar-item ml-auto" routerLink="/admin-homepage" routerLinkActive="active">
+      <p class="nav-item">Statistics</p>
+    </a>
+  </div>
+  <div class="navbar-selection ml-auto">
+    <a class="navbar-item" routerLink="/admin-recipes" routerLinkActive="active">
+      <p class="nav-item">Recipe Management</p>
+    </a>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<p class="title">File Upload Page</p>
+
+<body>
+  <p class="subtitle has-text-black"> 
+    Sales Data: <br>
+    <span class = "file-upload">
+      File Upload:
+    </span>
+  </p>
+  <form class = margin action="/action_page.php">
+    <input type="file" id="myFile" name="filename">
+  </form>
+  <br>
+  
+  <p class="subtitle has-text-black">
+    Purchasing Data: <br>
+    <span class = "file-upload">
+      File Upload:
+    </span>
+  </p>
+  <form class = margin action="/action_page.php">
+    <input type="file" id="myFile" name="filename">
+  </form>
+  <br>
+
+  <p class="subtitle has-text-black">
+    Recipe Data:  <br>
+    <span class = "file-upload">
+      File Upload:
+    </span>
+  </p>
+  <form class = margin action="/action_page.php">
+    <input type="file" id="myFile" name="filename">
+  </form>
+  <br>
+  
+</body>
+
+

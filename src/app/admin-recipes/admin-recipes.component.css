@@ -5,3 +5,11 @@
 .button{
     margin-top:10%;
 }
+.custom-input {
+  margin-bottom: 10px; /* Adjust the margin as needed */
+  padding: 5px; /* Add padding for better appearance */
+}
+
+.custom-button {
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}

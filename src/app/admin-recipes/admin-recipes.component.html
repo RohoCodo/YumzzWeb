@@ -7,13 +7,13 @@
           </a>
         </div>
         <div class="navbar-selection ml-auto">
-          <a class="navbar-item ml-auto" routerLink="/home" routerLinkActive="active">
-            <p class="nav-item">File Uploads</p>
+          <a class="navbar-item ml-auto" routerLink="/admin-fileupload" routerLinkActive="active">
+            <p class="nav-item">File Upload</p>
           </a>
         </div>
         <div class="navbar-selection ml-auto">
           <a class="navbar-item" routerLink="/admin-homepage" routerLinkActive="active">
-            <p class="nav-item">Advanced Statistics</p>
+            <p class="nav-item">Statistics</p>
           </a>
         </div>
         <!-- <div class="navbar-selection ml-auto">
@@ -25,38 +25,44 @@
       <h1 class="RecipeManTitle" style="font-size: 3.6rem;">Recipe Management</h1>
       <!-- <router-outlet></router-outlet> -->
     <div>
-    <div class="hero-body">
+      <div class="hero-body">
         <h2>File Operations</h2>
     
-        <label for="filename">File Name:</label>
-        <input type="text" id="filename" [(ngModel)]="filename" placeholder="Enter file name">
+        <div class="form-group">
+          <label for="filename">File Name:</label>
+          <input type="text" class="form-control" id="filename" [(ngModel)]="filename" placeholder="Enter file name">
+        </div>
     
-        <button (click)="readFile()">Read File</button>
+        <button class="btn btn-primary" (click)="readFile()">Read File</button>
     
         <div *ngIf="fileContent !== undefined">
-            <h3>File Content:</h3>
-            <pre>{{ fileContent }}</pre>
+          <h3>File Content:</h3>
+          <pre>{{ fileContent }}</pre>
         </div>
     
         <hr>
     
-        <label for="newContent">New Content:</label>
-        <textarea id="newContent" [(ngModel)]="newContent" placeholder="Enter new content"></textarea>
+        <div class="form-group">
+          <label for="newContent">New Content:</label>
+          <textarea class="form-control" id="newContent" [(ngModel)]="newContent" placeholder="Enter new content"></textarea>
+        </div>
     
-        <button class="button" (click)="updateFile()">Update File</button>
-    
-        <hr>
-    
-        <button class="button" (click)="deleteFile()">Delete File</button>
+        <button class="btn btn-success" (click)="updateFile()">Update File</button>
     
         <hr>
+    
+        <button class="btn btn-danger" (click)="deleteFile()">Delete File</button>
+    
+        <!-- Other File Operations... -->
     
         <h2>Recipe Operations</h2>
-
-        <hr>
     
-        <label for="recipeName">Recipe Name:</label>
-        <input type="text" id="recipeName" [(ngModel)]="recipeName" placeholder="Enter recipe name">
+        <div class="form-group">
+          <label for="recipeName">Recipe Name:</label>
+          <input type="text" class="form-control" id="recipeName" [(ngModel)]="recipeName" placeholder="Enter recipe name">
+        </div>
+    
+        <!-- Other Recipe Operations... -->
 
         <hr>
     
