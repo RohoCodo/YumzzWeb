@@ -6,14 +6,20 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { FileUploadComponent } from './statistics-page/statistics-page.component';
 import {SignInAdminPageComponent} from './admin-sign-in-page/admin-sign-in-page.component';
 import {SignUpAdminPageComponent} from './admin-sign-up-page/admin-sign-up-page.component';
+import { ForgotPasswordPageComponent } from './admin-forgot-password/admin-forgot-password-page.component';
+import {AdminHomePageComponent} from './admin-homepage/admin-homepage.component';
+import {AdminRecipesComponent} from './admin-recipes/admin-recipes.component';
 
 const routes: Routes = [
   { path: 'home', component: HomepageComponent},
   { path:'foodwaste', component: FoodWastePageComponent },
   { path:'admin-fileupload', component: FileUploadComponent},
   {path:'privacy', component: PrivacyPolicyComponent},
-  {path: 'admin', component: SignInAdminPageComponent},
+  {path: 'admin-signin', component: SignInAdminPageComponent},
   {path: 'admin-signup', component: SignUpAdminPageComponent},
+  {path: 'admin-forgotPassword', component: ForgotPasswordPageComponent},
+  {path: 'admin-homepage', component: AdminHomePageComponent},
+  {path : 'admin-recipes', component: AdminRecipesComponent},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 

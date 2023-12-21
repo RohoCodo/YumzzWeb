@@ -5,12 +5,12 @@ import {AngularFirestore} from '@angular/fire/compat/firestore'
 declare var $ : any;
 
 @Component({
-    selector: 'admin-signin',
-    templateUrl: './admin-sign-in-page.component.html',
-    styleUrls: ['./admin-sign-in-page.component.css']
+    selector: 'admin-forgotPassword',
+    templateUrl: './admin-forgot-password-page.component.html',
+    styleUrls: ['./admin-forgot-password-page.component.css']
 })
 
-export class SignInAdminPageComponent implements OnInit {
+export class ForgotPasswordPageComponent implements OnInit {
 
     constructor(private db: AngularFirestore){}
 

@@ -12,19 +12,32 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
+import { ForgotPasswordPageComponent } from './admin-forgot-password/admin-forgot-password-page.component';
+import { AdminHomePageComponent } from './admin-homepage/admin-homepage.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FileService } from './services/file.service';
+import { FileOperationComponent } from './components/file-operation/file-operation.component';
+import {AdminRecipesComponent} from './admin-recipes/admin-recipes.component';
+import {FormsModule} from '@angular/forms';
+
+
 
 @NgModule({
-  declarations: [AppComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent],
+  declarations: [AppComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent, ForgotPasswordPageComponent, AdminHomePageComponent, AdminRecipesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    FormsModule,
+    HttpClientModule,
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     ReactiveFormsModule,
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, FileOperationComponent, FileService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

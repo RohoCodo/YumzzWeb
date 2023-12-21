@@ -1,0 +1,20 @@
+.homepageTitle{
+    text-align: center;
+    font-size: 70px;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .chart-container {
+    width: 8%; 
+    margin-bottom: 20px;
+  }
+  
+  .chart {
+    height: 300px;
+    border: 1px solid #ddd;
+  }

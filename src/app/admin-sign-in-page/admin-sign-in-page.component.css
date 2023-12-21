@@ -1,4 +1,34 @@
 /* Bordered form */
+.Link{
+  font-size: 30px;
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.InputTitle{
+  font-size: 30px;
+}
+.signInTitle{
+  text-align:center;
+}
+.checks{
+  display: flex;
+  align-items: center;
+}
+.checked {
+  width: 1.2em; /* Adjust the width of the checkbox */
+  height: 1.2em; /* Adjust the height of the checkbox */
+  border: 2px solid #333; /* Border color */
+  background-color: #fff; /* Background color */
+  margin-left: 30%;
+  margin-right: 5%;
+  size: 20px;
+  transform: scale(1.5);
+}
+.remem{
+  font-size: 33px;
+}
 form {
     border: 3px solid #f1f1f1;
   }
@@ -32,7 +62,7 @@ form {
   /* Extra style for the cancel button (red) */
   .cancelbtn {
     width: auto;
-    padding: 10px 18px;
+    padding: 14px 20px;
     background-color: #f44336;
   }
   
@@ -65,7 +95,28 @@ form {
       display: block;
       float: none;
     }
-    .cancelbtn {
-      width: 100%;
-    }
+  }
+
+  .cancelbtn {
+    width: 100%;
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .signupbutton {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
