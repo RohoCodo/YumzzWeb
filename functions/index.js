@@ -1,5 +1,5 @@
 const functions = require('firebase-functions');
-const admin = require('firebase-admin/app');
+const admin = require('firebase-admin');
 const CryptoJS = require('crypto-js');
 const cors = require('cors');
 // // Create and Deploy Your First Cloud Functions

@@ -5,7 +5,7 @@ import {AngularFirestore} from '@angular/fire/compat/firestore'
 declare var $ : any;
 
 @Component({
-    selector: 'admin',
+    selector: 'admin-signin',
     templateUrl: './admin-sign-in-page.component.html',
     styleUrls: ['./admin-sign-in-page.component.css']
 })

@@ -16,10 +16,12 @@
     "rewrites": [
       {
         "source": "**",
-        "dynamicLinks": true,
         "destination": "/index.html"
       },
-      { "source": "/apple-app-site-association", "dynamicLinks": true }
+      {
+        "source": "/apple-app-site-association",
+        "destination": "/apple-app-site-association"
+      }
     ]
   },
   "functions": [

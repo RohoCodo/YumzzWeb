@@ -17,7 +17,7 @@
         </a>
       </div>
       <div class="navbar-selection ml-auto">
-        <a class="navbar-item" routerLink="/admin" routerLinkActive="active">
+        <a class="navbar-item" routerLink="/admin-signin" routerLinkActive="active">
           <p class="nav-item">Admin Sign In</p>
         </a>
       </div>
@@ -148,6 +148,23 @@
               </div>
             </div>
           </form> -->
+          <!-- Show Arya - how to upload file: 
+             window.onload = function() {
+  
+            var fileInput = document.getElementById('fileInput'),
+                fileDisplayArea = document.getElementById('fileDisplayArea');
+        
+            fileInput.addEventListener('change', function(e) {
+              var file = fileInput.files[0],
+                  reader = new FileReader();
+              
+              reader.onload = function(e) {
+                fileDisplayArea.innerText = reader.result;
+              };
+              
+              reader.readAsText(file);	
+            });
+        }; -->
         </div>
       </div>
       <div class="column is-12">
