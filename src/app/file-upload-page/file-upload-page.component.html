@@ -16,42 +16,48 @@
   </div>
 </nav>
 <router-outlet></router-outlet>
+
+
 <p class="title">File Upload Page</p>
 
-<body>
-  <p class="subtitle has-text-black"> 
-    Sales Data: <br>
-    <span class = "file-upload">
-      File Upload:
-    </span>
-  </p>
-  <form class = margin action="/action_page.php">
-    <input type="file" id="myFile" name="filename">
-  </form>
-  <br>
-  
-  <p class="subtitle has-text-black">
-    Purchasing Data: <br>
-    <span class = "file-upload">
-      File Upload:
-    </span>
-  </p>
-  <form class = margin action="/action_page.php">
-    <input type="file" id="myFile" name="filename">
-  </form>
-  <br>
+<div class="subtitle-container">
+  <div class="subtitle-wrapper">
+    <p class="subtitle has-text-black">Sales Data:</p>
+    <div class="parent">
+    <h3 class="description">Please make sure the format of the file is:
+      In the form of a pdf or a document
+    </h3>
+  </div>
+    <form class="margin" action="/action_page.php">
+      <input type="file" id="salesFile" name="salesFilename">
+    </form>
+  </div>
 
-  <p class="subtitle has-text-black">
-    Recipe Data:  <br>
-    <span class = "file-upload">
-      File Upload:
-    </span>
-  </p>
-  <form class = margin action="/action_page.php">
-    <input type="file" id="myFile" name="filename">
-  </form>
-  <br>
-  
-</body>
+  <div class="subtitle-wrapper">
+    <p class="subtitle has-text-black">Purchasing Data:</p>
+    <div class="parent">
+    <h3 class="description">Please make sure the format of the file is:
+      In the form of a pdf or a document
+    </h3>
+  </div>
+    <form class="margin" action="/action_page.php">
+      <input type="file" id="purchasingFile" name="purchasingFilename">
+    </form>
+  </div>
 
+  <div class="subtitle-wrapper">
+    <p class="subtitle has-text-black">Recipe Data:</p>
+    <div class="parent">
+      <h3 class="description">Please make sure the format of the file is:
+          Recipe name, Dish Price, Ingredient 1 Name, Ingredient 1 Quantity (lbs), Ingredient 2 Name...
+      </h3>
+  </div>
+    <form class="margin" action="/action_page.php">
+      <input type="file" id="recipeFile" name="recipeFilename">
+    </form>
+  </div>
+</div>
 
+<div class="center-button">
+<button class="upload-button"(click)="onSubmit()">Upload File</button>
+</div>

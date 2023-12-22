@@ -93,7 +93,7 @@ button:hover {
 }
 
 /* Clear floats */
-.clearfix::after {
+.control::after {
   content: "";
   clear: both;
   display: table;

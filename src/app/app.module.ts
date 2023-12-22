@@ -22,6 +22,8 @@ import { FileOperationComponent } from './components/file-operation/file-operati
 import {AdminRecipesComponent} from './admin-recipes/admin-recipes.component';
 import {FormsModule} from '@angular/forms';
 import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
+import { WasmService } from './services/wasm.service';
+
 
 
 
@@ -38,7 +40,7 @@ import { FileUploadPageComponent } from './file-upload-page/file-upload-page.com
     AngularFireStorageModule,
     ReactiveFormsModule,
   ],
-  providers: [AngularFirestore, FileOperationComponent, FileService],
+  providers: [AngularFirestore, FileOperationComponent, FileService, WasmService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -26,8 +26,7 @@
   },
   "functions": [
     {
-      "source": "functions",
-      "runtime": "nodejs14"
+      "source": "functions"
     }
   ]
 }

@@ -24,27 +24,28 @@
         <div class="columns is-centered is-vcentered">
           <div class="column is-6" style="padding: 0;">
             <h1 class="title is-spaced pl-6" style="font-size: 3.6rem;">
-              <form id="signInForm" style="border:1px solid #ccc">
-                <div class="container">
+              <form [formGroup]="this.form" (ngSubmit)="onSubmit()" style="border:1px solid #ccc">
+                <div class="field">
+                  <div class="container">
                   <h1 class="signInTitle">Yumzz Sign In</h1>
-                  <label for="uname" class="InputTitle"><b>Restaurant Name: </b></label>
-                  <input type="text" placeholder="Enter Restaurant Name" name="uname" id="restaurantName" required>
+                  <!-- <label for="uname" class="InputTitle"><b>Restaurant Name: </b></label>
+                  <input type="text" placeholder="Enter Restaurant Name" name="uname" id="restaurantName" required> -->
 
                   <label for="email" class="InputTitle"><b>Email: </b></label>
-                  <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                  <input type="text" placeholder="Enter Email" formControlName="email" id="email" required>
     
-                  <label for="psw" class="InputTitle"><b>Password: </b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+                  <label for="password" class="InputTitle"><b>Password: </b></label>
+                  <input type="password" placeholder="Enter Password" formControlName="password" id="password" required>
     
-                  <button type="button" routerLink="/admin-homepage" routerLinkActive="active" onclick="signIn()">Login</button>
+                  <button type="button" (click)="onSubmit()">Login</button>
                   <label class="checks">
                     <input type="checkbox" checked="checked" class="checked"> <h1 class="remem"> Remember me </h1>
                   </label>
                 </div>
-    
-                <div class="container" style="background-color:#f1f1f1">
-                  <button type="button" class="cancelbtn">Cancel</button>
                 </div>
+                <!-- <div class="container" style="background-color:#f1f1f1">
+                  <button type="button" class="cancelbtn">Cancel</button>
+                </div> -->
                 <a class="Link" routerLink="/admin-forgotPassword" routerLinkActive="active" style="color:dodgerblue">
                   Forgot password?
                 </a>
@@ -53,35 +54,11 @@
                  <!-- <a class="navbar-item" routerLink="/admin-signup" routerLinkActive="active">
                   <span class="psw">Sign Up</span>
                 </a> -->
+
               </form>
             </h1>
           </div>
         </div>
       </div>
     </div>
-    
-    <script>
-      // Function to handle the sign-in process
-
-      function signIn() {
-        // Get form data
-        const restaurantName = document.getElementById('restaurantName').value;
-        const password = document.getElementById('password').value;
-
-        const signInFunction = firebase.functions().httpsCallable('signin');
-
-
-
-        signInFunction({restaurantName: restaurantName, password: password})
-        .then((result) => {
-            console.log(result.data.message);
-            // Optionally, you can redirect the user to a new page or perform other actions after successful signup
-          })
-          .catch((error) => {
-            console.error('Error during sign up:', error.message);
-            // Handle errors (e.g., display an error message to the user)
-          });
-      }
-    </script>
-    
 </section>

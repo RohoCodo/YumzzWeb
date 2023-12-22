@@ -7,20 +7,20 @@ declare var $ : any;
 export class HomepageComponent implements OnInit {
     form = new UntypedFormGroup({email: new UntypedFormControl('')});
 
-    // onSubmit() {
-    //     let data = this.form.value;
-    //     this.form.reset();
-    //     alert("We will get back to you shortly!");
-    //     return new Promise < any > ((resolve, reject) => {
-    //         this
-    //             .db
-    //             .collection('EarlyAccessEmails')
-    //             .doc(data.email)
-    //             .set(data)
-    //             .then((res) => {}, (err) => reject(err));
-    //     });
+    onSubmit() {
+        let data = this.form.value;
+        this.form.reset();
+        alert("We will get back to you shortly!");
+        return new Promise < any > ((resolve, reject) => {
+            this
+                .db
+                .collection('EarlyAccessEmails')
+                .doc(data.email)
+                .set(data)
+                .then((res) => {}, (err) => reject(err));
+        });
 
-    // }
+    }
 
     constructor(private db : AngularFirestore) {}
 
