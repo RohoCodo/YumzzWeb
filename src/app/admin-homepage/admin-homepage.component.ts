@@ -12,7 +12,7 @@ import { FoodWastePageComponent } from '../foodwaste-page/foodwaste.component';
 
 declare var $ : any;
 @Component({
-    selector: 'app-admin-homepage',
+    selector: 'admin-homepage',
     templateUrl: './admin-homepage.component.html',
     styleUrls: ['./admin-homepage.component.css']
   })

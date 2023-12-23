@@ -16,17 +16,17 @@ export class WasmService {
   }
 
   private initModule(): void {
-    if (!this.isModuleInitialized) {
-      Module.onRuntimeInitialized = () => {
-        // Initialization logic, if needed
-    };
+    // if (!this.isModuleInitialized) {
+    //   Module.onRuntimeInitialized = () => {
+    //     // Initialization logic, if needed
+    // };
 
-      // Load the WebAssembly module
-    const script = document.createElement('script');
-    script.src = 'assets/COGScalc.js'; // Update with the correct path
-    document.body.appendChild(script);
-    this.isModuleInitialized = true;
-    }
+    //   // Load the WebAssembly module
+    // const script = document.createElement('script');
+    // script.src = 'assets/COGScalc.js'; // Update with the correct path
+    // document.body.appendChild(script);
+    // this.isModuleInitialized = true;
+    // }
   }
 
   // Define functions to interact with your WebAssembly module

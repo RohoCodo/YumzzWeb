@@ -37,7 +37,7 @@
                   <label for="password" class="InputTitle"><b>Password: </b></label>
                   <input type="password" placeholder="Enter Password" formControlName="password" id="password" required>
     
-                  <button type="button" (click)="onSubmit()">Login</button>
+                  <button type="button" routerLink="/admin-homepage" routerLinkActive="active" (onclick)="onSubmit()">Login</button>
                   <label class="checks">
                     <input type="checkbox" checked="checked" class="checked"> <h1 class="remem"> Remember me </h1>
                   </label>

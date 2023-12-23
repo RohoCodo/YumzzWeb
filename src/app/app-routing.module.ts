@@ -10,6 +10,7 @@ import { ForgotPasswordPageComponent } from './admin-forgot-password/admin-forgo
 import {AdminHomePageComponent} from './admin-homepage/admin-homepage.component';
 import {AdminRecipesComponent} from './admin-recipes/admin-recipes.component';
 
+
 const routes: Routes = [
   { path: 'home', component: HomepageComponent},
   { path:'foodwaste', component: FoodWastePageComponent },
