@@ -27,10 +27,10 @@ export class FileUploadPageComponent implements OnInit {
   constructor(private storage: AngularFireStorage, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    $(document)
-        .on("click", function(evt){
-            evt.preventDefault();
-        })
+    // $(document)
+    //     .on("click", function(evt){
+    //         evt.preventDefault();
+    //     })
     // this.salesform = this.fb.group({
     //   salesFilename: [''] // You can add validators if needed
     // });
