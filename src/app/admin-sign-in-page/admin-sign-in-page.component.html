@@ -1,22 +1,8 @@
 <section class="hero is-fullheight" style="background: #F3F1EE;">
     <div class="hero-head">
       <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" routerLink="/home" routerLinkActive="active">
-            <p class="title"> Yumzz</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-          <a class="navbar-item ml-auto" routerLink="/home" routerLinkActive="active">
-            <p class="nav-item">AR Advertising</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-          <a class="navbar-item" routerLink="/privacy" routerLinkActive="active">
-            <p class="nav-item">Privacy Policy</p>
-          </a>
-        </div>
-      </nav>
+      <app-navigation-landing-page></app-navigation-landing-page>
+    </nav>
       <router-outlet></router-outlet>
     </div>
     <div class="hero-body">
@@ -28,8 +14,6 @@
                 <div class="field">
                   <div class="container">
                   <h1 class="signInTitle">Yumzz Sign In</h1>
-                  <!-- <label for="uname" class="InputTitle"><b>Restaurant Name: </b></label>
-                  <input type="text" placeholder="Enter Restaurant Name" name="uname" id="restaurantName" required> -->
 
                   <label for="email" class="InputTitle"><b>Email: </b></label>
                   <input type="text" placeholder="Enter Email" formControlName="email" id="email" required>
@@ -37,24 +21,19 @@
                   <label for="password" class="InputTitle"><b>Password: </b></label>
                   <input type="password" placeholder="Enter Password" formControlName="password" id="password" required>
     
-                  <button type="button" routerLink="/admin-homepage" routerLinkActive="active" (onclick)="onSubmit()">Login</button>
+                  <div class="control">
+                    <button type="button" class="signupbtn" (click)="onSubmit()">Sign In</button>
+                    <!-- <button type="button" (onclick)="onSubmit()">Login</button> -->
+                  </div>
                   <label class="checks">
                     <input type="checkbox" checked="checked" class="checked"> <h1 class="remem"> Remember me </h1>
                   </label>
                 </div>
                 </div>
-                <!-- <div class="container" style="background-color:#f1f1f1">
-                  <button type="button" class="cancelbtn">Cancel</button>
-                </div> -->
                 <a class="Link" routerLink="/admin-forgotPassword" routerLinkActive="active" style="color:dodgerblue">
                   Forgot password?
                 </a>
                 <a class="Link" routerLink="/admin-signup" routerLinkActive="active" style="color:dodgerblue">Sign Up Right Here</a>
-                  <!-- <button type="button" class="signupbutton">Sign Up</button> -->
-                 <!-- <a class="navbar-item" routerLink="/admin-signup" routerLinkActive="active">
-                  <span class="psw">Sign Up</span>
-                </a> -->
-
               </form>
             </h1>
           </div>

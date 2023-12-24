@@ -6,8 +6,26 @@ import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/comp
 import { storage } from 'firebase-admin';
 import { WasmService } from '../services/wasm.service';
 import { FoodWastePageComponent } from '../foodwaste-page/foodwaste.component';
+import { ConstantPool } from '@angular/compiler';
+import { Observable } from 'rxjs';
 
 
+interface Ingredient {
+  name: string;
+  quantity: number;
+}
+
+interface RecipeData {
+  recipeName: string;
+  dishPrice: number;
+  ingredients: Ingredient[];
+}
+
+interface IngredientQuantAmt {
+  name: string;
+  quantity: number;
+  price: number;
+}
 
 
 declare var $ : any;
@@ -18,9 +36,21 @@ declare var $ : any;
   })
   export class AdminHomePageComponent implements OnInit {
 
-    userInputDishName: string = '';
+    dishName: string = '';
+    ingredient: string = '';
+    ingredientsTxtData: string = ''; // Text of Text file gotten from firebase
+    ingredientsQuantAmtTxtData: string = ''; // Text of Text file gotten from firebase
+    recipeData: RecipeData[] = [];
+    ingredientQuantAmtData: IngredientQuantAmt[] = [];
+    profitabilityResult; // Variable to store the result
+    reorderPointResult;
+    safetyStockResult;
+    optimalorderQuantity;
+    cogsResult;
 
-    constructor(private wasmService: WasmService) {}
+
+    constructor(private wasmService: WasmService, private storage: AngularFireStorage) {
+    }
     // Replace these arrays with your actual data
     dishNames = ["Dish1", "Dish2", "Dish3", "Dish4", "Dish5"];
     foodCosts = [10, 15, 12, 8, 20];
@@ -39,18 +69,28 @@ declare var $ : any;
     reorderPointChart: any;
   
     ngOnInit() {
+      const filePath = 'gs://virtual-menu-59b9e.appspot.com/Restaurant/Kathmandu-Cuisine/Recipes/ingredients.txt'; // Replace with the actual file path
+      this.getFileFromStorage(filePath).subscribe(
+      (downloadURL: string) => {
+        console.log(`File download URL: ${downloadURL}`);
+        // Handle the download URL as needed
+      },
+      (error) => {
+        console.error('Error getting file from storage:', error);
+      }
+    );
       // Create chart instances with your data
 
         // Example: Use the WasmService to run your C++ analysis
       
-      const result = this.wasmService.runAnalysis(this.foodCostsChart);
-      console.log('Analysis Result:', result);
+      // const result = this.wasmService.runAnalysis(this.foodCostsChart);
+      // console.log('Analysis Result:', result);
       
-      this.foodCostsChart = this.createBarChart('foodCostsChart', 'Food Costs', this.foodCosts, 'blue');
-      this.orderingFrequencyChart = this.createBarChart('orderingFrequencyChart', 'Ordering Frequency', this.orderingFrequency, 'green');
-      this.reorderAlertChart = this.createBarChart('reorderAlertChart', 'Reorder Alert', this.reorderAlert.map(alert => alert ? 1 : 0), 'red');
-      this.runningLowReminderChart = this.createBarChart('runningLowReminderChart', 'Running Low Reminder', this.runningLowReminder.map(reminder => reminder ? 1 : 0), 'orange');
-      this.reorderPointChart = this.createBarChart('reorderPointChart', 'Reorder Point', this.reorderPoint, 'purple');
+      // this.foodCostsChart = this.createBarChart('foodCostsChart', 'Food Costs', this.foodCosts, 'blue');
+      // this.orderingFrequencyChart = this.createBarChart('orderingFrequencyChart', 'Ordering Frequency', this.orderingFrequency, 'green');
+      // this.reorderAlertChart = this.createBarChart('reorderAlertChart', 'Reorder Alert', this.reorderAlert.map(alert => alert ? 1 : 0), 'red');
+      // this.runningLowReminderChart = this.createBarChart('runningLowReminderChart', 'Running Low Reminder', this.runningLowReminder.map(reminder => reminder ? 1 : 0), 'orange');
+      // this.reorderPointChart = this.createBarChart('reorderPointChart', 'Reorder Point', this.reorderPoint, 'purple');
     }
   
     // Function to create a bar chart
@@ -76,35 +116,64 @@ declare var $ : any;
         }
       });
     }
-
-    async calculateProfitMargin() {
-      try {
-        // Retrieve dishName from user input
-        const dishName = this.userInputDishName;
-  
-        // Check if the dishName is not empty
-        if (!dishName) {
-          console.error('Dish name is required.');
-          return;
-        }
-  
-        // You may need to fetch dishCosts and dishPrice from Firebase Storage here
-        // Example: const dishCosts = await this.getDataFromFirebaseStorage('path/to/dishCosts');
-        //          const dishPrice = await this.getDataFromFirebaseStorage('path/to/dishPrice');
-  
-        // Sample data for testing
-        const dishCosts = { Dish1: 5, Dish2: 10, Dish3: 8, Dish4: 15, Dish5: 12 };
-        const dishPrice = 20;
-        const more = true;
-  
-        // Calculate profit margin
-        // const profitMargin = await this.wasmService.calculateProfitMargin(dishCosts, dishPrice, dishName, more);
-  
-        // Log the result or update your UI as needed
-        // console.log('Profit Margin:', profitMargin);
-      } catch (error) {
-        console.error(error);
+    getFileFromStorage(filePath: string): Observable<any> {
+      if(this.checkFileExists(filePath)){
+        const storageRef = this.storage.ref(filePath);
+        return storageRef.getDownloadURL();
       }
+    }
+
+    checkFileExists(filename: string): boolean {
+      const storageRef = this.storage.ref(filename);
+  
+      storageRef.getDownloadURL().subscribe(
+        (url: string) => {
+          console.log(`File ${filename} exists. URL: ${url}`);
+          return true;
+        },
+        (error: any) => {
+          if (error.code === 'storage/object-not-found') {
+            console.log(`File ${filename} does not exist.`);
+          } else {
+            console.error('Error checking file existence:', error);
+          }
+          return false;
+        }
+      );
+      return false;
+    }
+
+    calculateProfitMargin() {  
+      this.profitabilityResult = 86;
+      // console.log(this.dishName);
+      // this.wasmService.calculateIngredientDirectCostfromData(this.dishName.replace(/\s+/g, '-')).subscribe(
+      //   (result) => {
+      //     this.profitabilityResult = result;
+      //   },
+      //   (error) => {
+      //     console.error('Error calculating profitability:', error);
+      //     // Handle errors as needed
+      //   }
+      // );
+    }
+
+    calculateCOGS(){
+      this.cogsResult = 2.99;
+    }
+
+    calculateOptimalOrderQuantity() {  
+      console.log(this.dishName);
+      this.optimalorderQuantity = 0;
+      // this,this.wasmService.calculateOptimalOrderQuantity()
+      // this.wasmService.calculateIngredientDirectCostfromData(this.dishName.replace(/\s+/g, '-')).subscribe(
+      //   (result) => {
+      //     this.optimalorderQuantity = result;
+      //   },
+      //   (error) => {
+      //     console.error('Error calculating profitability:', error);
+      //     // Handle errors as needed
+      //   }
+      // );
     }
   
     // Method to handle button click
@@ -112,29 +181,18 @@ declare var $ : any;
       this.calculateProfitMargin();
     }
 
-    // runProfitMarginCalculator() {
-    //   // Example: Use the WasmService to run your C++ profit margin calculator
-    //   const result = this.wasmService.calculateProfitMargin();
-      
-    //   // profitMarginCommand(this.foodCostsChart);
-    //   console.log('Profit Margin:', result);
-    // }
+    deleteDish() {
+      // Call your API endpoint with this.dishName, etc.
+      // Handle the response
+    }
 
-    // float calculateOptimalOrderQuantity(double orderCost, int sales, double storingCost){
-    //   return sqrt((2 * orderCost * sales)/storingCost);
-    // }
-    
-    // float calculateSafetyStock(int maxLeadTime, int averageLeadTime, int averageSales){
-    //   return (maxLeadTime - averageLeadTime) * averageSales;
-    // }
-    
-    // float calculateReorderPoint(int safetyStock, int averageConsumption, int leadTime){
-    //   return (safetyStock + (averageConsumption * leadTime));
-    // }
-    
-    // float calculateProfitMargin(float sellingPrice, float costOfGoodsSold) {
-    //   return ((sellingPrice - costOfGoodsSold) / sellingPrice) * 100;
-    // }
+    calculateSafetyStock(){
+      
+    }
+
+    calculateReorderPoint(){
+
+    }
     
     // float calculateIngredientDirectCost(double ingredAmt, double ingredCost, double ingredQuant) {
     //   return (ingredAmt * (ingredQuant / ingredCost));

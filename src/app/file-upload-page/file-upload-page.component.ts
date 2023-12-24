@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import {FormBuilder, FormGroup} from '@angular/forms'
+import {FormBuilder, FormGroup} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
 // import { finalize } from 'rxjs/operators';
 
 
@@ -13,35 +15,33 @@ declare var $ : any;
 })
 
 export class FileUploadPageComponent implements OnInit {
-  @ViewChild('salesFileInput') salesFileInput!: ElementRef<HTMLInputElement>;
-  @ViewChild('purchasingFileInput') purchasingFileInput!: ElementRef<HTMLInputElement>;
-  @ViewChild('recipeFileInput') recipeFileInput!: ElementRef<HTMLInputElement>;
 
-  // salesform: FormGroup;
-  // purchasingform: FormGroup;
-  // recipeform: FormGroup;
-  
+  salesFile: File | null = null;
+  purchasingFile: File | null = null;
+  recipeFile: File | null = null;
 
-  selectedFile: File | null = null;
-
-  constructor(private storage: AngularFireStorage, private fb: FormBuilder) {}
+  constructor(private storage: AngularFireStorage, private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
-    // $(document)
-    //     .on("click", function(evt){
-    //         evt.preventDefault();
-    //     })
-    // this.salesform = this.fb.group({
-    //   salesFilename: [''] // You can add validators if needed
-    // });
 
-    // this.purchasingform = this.fb.group({
-    //   purchasingFilename: ['']
-    // });
+  }
 
-    // this.recipeform = this.fb.group({
-    //   recipeFilename: ['']
-    // });
+  onFileSelected(event: any, fileType: string) {
+    const file = event.target.files[0] as File;
+
+    switch (fileType) {
+      case 'sales':
+        this.salesFile = file;
+        break;
+      case 'purchasing':
+        this.purchasingFile = file;
+        break;
+      case 'recipe':
+        this.recipeFile = file;
+        break;
+      default:
+        console.error('Invalid fileType:', fileType);
+    }
   }
 
   // onFileSelected(event: any) {
@@ -73,36 +73,27 @@ export class FileUploadPageComponent implements OnInit {
 
   //   // // Upload Recipe Data
   //   // this.uploadFile('recipeFolder', 'recipeFileInput', recipedata);
-  // }
-  // uploadFile(folder: string, inputId: string) {
-  //   const storageRef = this.storage.ref('gs://virtual-menu-59b9e.appspot.com/Restaurant/Kathmandu-Cuisine');
-    
-  //   // Use unique file name or generate one
-  //   const fileName = inputId + `file_${new Date().getTime()}`;
+  }
+  onUpload() {
+    this.uploadFile('sales', this.salesFile);
+    this.uploadFile('purchasing', this.purchasingFile);
+    this.uploadFile('recipe', this.recipeFile);
+  }
 
-  //   const fileInput = document.getElementById(inputId) as HTMLInputElement;
+  private uploadFile(fileType: string, file: File | null) {
+    if (!file) {
+      console.error(`No ${fileType} file selected.`);
+      return;
+    }
 
-  //   if (fileInput.files && fileInput.files.length > 0) {
-  //     const file = fileInput.files[0];
-  //     const fileRef = storageRef.child(fileName);
+    const formData = new FormData();
+    formData.append('file', file);
 
-  //     const uploadTask = fileRef.put(file);
-
-  //     uploadTask
-  //       .snapshotChanges()
-  //       .pipe(
-  //         finalize(() => {
-  //           fileRef.getDownloadURL().subscribe((downloadURL) => {
-  //             console.log('File is uploaded to', downloadURL);
-  //             // You can save the downloadURL to your database or perform additional actions
-  //           });
-  //         })
-  //       )
-  //       .subscribe();
-  //   }
-  //  else {
-  //   // Handle case where no file is selected
-  //   console.warn('No file selected for upload.');
-  // }
+    this.http.post(`https://us-central1-virtual-menu-59b9e.cloudfunctions.net/uploadFile/${fileType}`, formData)
+      .subscribe(response => {
+        console.log(`${fileType} File uploaded successfully!`, response);
+      }, error => {
+        console.error(`Error uploading ${fileType} file:`, error);
+      });
   }
 }

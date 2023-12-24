@@ -1,22 +1,8 @@
 <section class="hero is-fullheight" style="background: #F3F1EE;">
     <div class="hero-head">
       <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" routerLink="/home" routerLinkActive="active">
-            <p class="title"> Yumzz</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-          <a class="navbar-item ml-auto" routerLink="/home" routerLinkActive="active">
-            <p class="nav-item">AR Advertising</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-          <a class="navbar-item" routerLink="/privacy" routerLinkActive="active">
-            <p class="nav-item">Privacy Policy</p>
-          </a>
-        </div>
-      </nav>
+      <app-navigation-landing-page></app-navigation-landing-page>
+    </nav>
       <router-outlet></router-outlet>
     </div>
     <div class="hero-body">

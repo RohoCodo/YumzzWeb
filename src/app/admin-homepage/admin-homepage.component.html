@@ -11,6 +11,8 @@
 <section class="hero is-fullheight" style="background: #F3F1EE;">
     <div class="hero-head">
       <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
+      <app-navigation></app-navigation>
+      <!-- <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" routerLink="/home" routerLinkActive="active">
             <p class="title"> Yumzz</p>
@@ -22,32 +24,68 @@
           </a>
         </div>
         <div class="navbar-selection ml-auto">
-          <!-- <a class="navbar-item" routerLink="/privacy" routerLinkActive="active">
-            <p class="nav-item">Advanced Statistics</p>
-          </a> -->
         </div>
         <div class="navbar-selection ml-auto">
             <a class="navbar-item" routerLink="/admin-recipes" routerLinkActive="active">
               <p class="nav-item">Recipe Management</p>
             </a>
           </div>
-      </nav>
-      <h1 class="homepageTitle" style="font-size: 3.6rem;">Admin Homepage</h1>
+      </nav> -->
+    </nav>
+    <h1 class="homepageTitle" style="font-size: 3.6rem;">Admin Homepage</h1>
       <router-outlet></router-outlet>
     </div>
     <div class="hero-body">
-        <div class="container">
-          <div class="columns is-centered is-vcentered">
-            <div class="column is-6" style="padding: 0;">
-              <body>
-                <canvas id="foodCostsChart" width="400" height="200"></canvas>
-                <canvas id="orderingFrequencyChart" width="400" height="200"></canvas>
-                <canvas id="reorderAlertChart" width="400" height="200"></canvas>
-                <canvas id="runningLowReminderChart" width="400" height="200"></canvas>
-                <canvas id="reorderPointChart" width="400" height="200"></canvas>
-              </body>
-            </div>
+      <div class="container">
+        <div class="columns is-centered is-vcentered">
+          <div class="column is-6" style="padding: 0;">
+            <body>
+              <div class="container">
+                <!-- Column 1: Dish Name Input and COGS & Profit Margin Outputs -->
+                <div class="column">
+                  <div>
+                    <label for="dishName">Enter Dish Name:</label>
+                    <input type="text" [(ngModel)]="dishName" placeholder="Enter Dish Name">
+                  </div>
+              
+                  <div class="button-container">
+                    <button class="button" (click)="calculateProfitMargin()">Calculate Profitability</button>
+                    <div class="output-box" *ngIf="profitabilityResult !== null">Profitability Result: {{ profitabilityResult }} %</div>
+                  </div>
+              
+                  <div class="button-container">
+                    <button class="button" (click)="calculateCOGS()">Calculate COGS</button>
+                    <div class="output-box" *ngIf="cogsResult !== null">COGS Result: ${{ cogsResult }}</div>
+                  </div>
+                </div>
+              
+                <!-- Column 2: Ingredient Name Input and Reorder Point, Safety Stock, and Optimal Order Quantity Outputs -->
+                <div class="column">
+                  <div>
+                    <label for="ingredient">Ingredient:</label>
+                    <input type="text" placeholder="Enter Ingredient Name" formControlName="ingredient" id="ingredient" [(ngModel)]="ingredient">
+                  </div>
+              
+                  <div class="button-container">
+                    <button class="button" (click)="calculateOptimalOrderQuantity()">Calculate Optimal Order Quantity</button>
+                    <div class="output-box" *ngIf="optimalorderQuantity !== null">Optimal Order Quantity Result: {{ optimalorderQuantity }}</div>
+                  </div>
+              
+                  <div class="button-container">
+                    <button class="button" (click)="calculateSafetyStock()">Calculate Safety Stock</button>
+                    <div class="output-box" *ngIf="safetyStockResult !== null">Safety Stock Result: {{ safetyStockResult }}</div>
+                  </div>
+              
+                  <div class="button-container">
+                    <button class="button" (click)="calculateReorderPoint()">Calculate Reorder Point</button>
+                    <div class="output-box" *ngIf="reorderPointResult !== null">Reorder Point Result: {{ reorderPointResult }}</div>
+                  </div>
+                </div>
+              </div>              
+            </body>
           </div>
         </div>
       </div>
+    </div>
+    
 </section>

@@ -22,7 +22,10 @@ import { FileOperationComponent } from './components/file-operation/file-operati
 import {AdminRecipesComponent} from './admin-recipes/admin-recipes.component';
 import {FormsModule} from '@angular/forms';
 import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
-// import { WasmService } from './services/wasm.service';
+import { WasmService } from './services/wasm.service';
+import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationLandingPageComponent } from './navigation-landing-page/navigation-landing-page.component';
+
 // import { FileUploadService } from './services/file-upload.service';
 // import { FileUploadComponent } from './components/file-operation/file-operation.component';
 
@@ -30,7 +33,7 @@ import { FileUploadPageComponent } from './file-upload-page/file-upload-page.com
 
 
 @NgModule({
-  declarations: [AppComponent, FileUploadPageComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent, ForgotPasswordPageComponent, AdminHomePageComponent, AdminRecipesComponent],
+  declarations: [AppComponent, FileUploadPageComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent, ForgotPasswordPageComponent, AdminHomePageComponent, AdminRecipesComponent, NavigationComponent, NavigationLandingPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +45,7 @@ import { FileUploadPageComponent } from './file-upload-page/file-upload-page.com
     AngularFireStorageModule,
     ReactiveFormsModule,
   ],
-  providers: [AngularFirestore, FileOperationComponent, FileService],
+  providers: [AngularFirestore, FileOperationComponent, FileService, WasmService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

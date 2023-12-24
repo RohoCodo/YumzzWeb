@@ -17,19 +17,21 @@ export class SignInAdminPageComponent implements OnInit {
 
     constructor(private db: AngularFirestore, private router: Router){}
     ngOnInit(): void {
-        $(document)
-            .on("click", function(evt){
-                evt.preventDefault();
-            })
+        // $(document)
+        //     .on("click", function(evt){
+        //         evt.preventDefault();
+        //     })
     }
 
     onSubmit() {
+
         let data = this.form.value;
         this.form.reset();
         console.log(data);
 
         return new Promise<void>((resolve, reject) => {
             // Check if the restaurant name and password combo exists in the collection
+            console.log("YES");
             this.db.collection('RestaurantUser', ref =>
             ref.where('email', '==', data.email)
                 .where('password', '==', data.password)

@@ -13,3 +13,46 @@
 .custom-button {
   margin-bottom: 10px; /* Adjust the margin as needed */
 }
+
+/* styles.css */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-head {
+  /* Add your styles for the hero head if needed */
+}
+
+.RecipeManTitle {
+  margin-top: 1rem;
+}
+
+.hero-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.file-operations {
+  margin-top: 1rem;
+}
+
+.button {
+  margin-top: 0.5rem;
+  /* Add more styling for buttons as needed */
+}

@@ -1,7 +1,9 @@
 <section class="hero is-fullheight" style="background: #F3F1EE;">
     <div class="hero-head">
       <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+        <app-navigation></app-navigation>
+
+        <!-- <div class="navbar-brand">
           <a class="navbar-item" routerLink="/home" routerLinkActive="active">
             <p class="title"> Yumzz</p>
           </a>
@@ -15,7 +17,7 @@
           <a class="navbar-item" routerLink="/admin-homepage" routerLinkActive="active">
             <p class="nav-item">Statistics</p>
           </a>
-        </div>
+        </div> -->
         <!-- <div class="navbar-selection ml-auto">
             <a class="navbar-item" routerLink="/privacy" routerLinkActive="active">
               <p class="nav-item">Recipe Management</p>
@@ -25,73 +27,44 @@
       <h1 class="RecipeManTitle" style="font-size: 3.6rem;">Recipe Management</h1>
       <!-- <router-outlet></router-outlet> -->
     <div>
-      <div class="hero-body">
-        <h2>File Operations</h2>
-    
-        <div class="form-group">
-          <label for="filename">File Name:</label>
-          <input type="text" class="form-control" id="filename" [(ngModel)]="filename" placeholder="Enter file name">
-        </div>
-    
-        <button class="btn btn-primary" (click)="readFile()">Read File</button>
-    
-        <div *ngIf="fileContent !== undefined">
-          <h3>File Content:</h3>
-          <pre>{{ fileContent }}</pre>
-        </div>
-    
-        <hr>
-    
-        <div class="form-group">
-          <label for="newContent">New Content:</label>
-          <textarea class="form-control" id="newContent" [(ngModel)]="newContent" placeholder="Enter new content"></textarea>
-        </div>
-    
-        <button class="btn btn-success" (click)="updateFile()">Update File</button>
-    
-        <hr>
-    
-        <button class="btn btn-danger" (click)="deleteFile()">Delete File</button>
-    
-        <!-- Other File Operations... -->
-    
-        <h2>Recipe Operations</h2>
-    
-        <div class="form-group">
-          <label for="recipeName">Recipe Name:</label>
-          <input type="text" class="form-control" id="recipeName" [(ngModel)]="recipeName" placeholder="Enter recipe name">
-        </div>
-    
-        <!-- Other Recipe Operations... -->
-
-        <hr>
-    
-        <button class="button" (click)="createRecipe()">Create Recipe</button>
-
-        <hr>
-    
-        <button class="button" (click)="getIngredients()">Get Ingredients</button>
-
-        <hr>
-    
-        <button class="button" (click)="deleteRecipe()">Delete Recipe</button>
-        
-        <hr>
-    
-        <button class="button" (click)="editIngredients()">Edit Ingredients</button>
-
-        <hr>
-    
-        <button class="button" (click)="deleteIngredient()">Delete Ingredient</button>
-
-        <hr>
-    
-        <button class="button" (click)="editIngredientQuantity()">Edit Ingredient Quantity</button>
-
-        <hr>
-    
-        <button class="button" (click)="addIngredient()">Add Ingredient</button>
-
-        <hr>
+      <!-- buttons.component.html -->
+x
+  <div class="hero-body">
+    <!-- File Operations Inputs -->
+    <div class="form-group">
+      <label for="filename">File Name:</label>
+      <input type="text" class="form-control" id="filename" [(ngModel)]="filename" placeholder="Enter file name">
     </div>
+
+    <div class="form-group">
+      <label for="newContent">New Content:</label>
+      <textarea class="form-control" id="newContent" [(ngModel)]="newContent" placeholder="Enter new content"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="recipeName">Recipe Name:</label>
+      <input type="text" class="form-control" id="recipeName" [(ngModel)]="recipeName" placeholder="Enter recipe name">
+    </div>
+
+    <!-- File Operations Buttons -->
+    <!-- <div class="file-operations"> -->
+      <!-- <h2>File Operations</h2> -->
+
+      <!-- <button class="button" (click)="readFile()">Read File</button> -->
+
+      <!-- ... Other buttons ... -->
+
+      <!-- <h2>Recipe Operations</h2> -->
+
+      <button class="button" (click)="createRecipe()">Create Recipe</button>
+      
+      <button class="button" >Edit Recipe</button>
+
+      <!-- ... Other buttons ... -->
+    <!-- </div> -->
+
+    <ng-template #fileOperationsTemplate>
+      <!-- Use this template if conditions are not met -->
+    </ng-template>
+  </div>
 <!-- </section> -->

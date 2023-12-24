@@ -5,6 +5,15 @@
       {
         "source": "/apple-app-site-association",
         "headers": [{"key": "Content-Type", "value": "application/json"}]
+      },
+      {
+        "source": "/getPurchasingTextFile",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
       }
     ],
     "appAssociation": "AUTO",

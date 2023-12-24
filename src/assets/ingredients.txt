@@ -1,0 +1,2 @@
+Veg-Momo-Steamed,14,Flour,0.14623757,Shredded-Green-Cabbage,0.099208,Carrot,0.0385809,Ginger,0.00334,Pepper,0.00334,Cilantro,0.0075,Garlic,0.24;
+Veg-Momo,9.99,Flour,0.164313,Shredded-Cabbage,.111609,Carrot,0.434035,China-Ginger,.0037575,Pepper,.0037575,Cilantro,.0084375,Garlic,.1575

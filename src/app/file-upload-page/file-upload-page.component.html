@@ -1,22 +1,10 @@
+<section class="hero is-fullheight" style="background: #F3F1EE;">
+  <div class="hero-head">
 <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" routerLink="/home" routerLinkActive="active">
-      <p class="title"> Yumzz</p>
-    </a>
-  </div>
-  <div class="navbar-selection ml-auto">
-    <a class="navbar-item ml-auto" routerLink="/admin-homepage" routerLinkActive="active">
-      <p class="nav-item">Statistics</p>
-    </a>
-  </div>
-  <div class="navbar-selection ml-auto">
-    <a class="navbar-item" routerLink="/admin-recipes" routerLinkActive="active">
-      <p class="nav-item">Recipe Management</p>
-    </a>
-  </div>
+  <app-navigation></app-navigation>
 </nav>
 <router-outlet></router-outlet>
-
+</div>
 
 <p class="title">File Upload Page</p>
 
@@ -24,40 +12,42 @@
   <div class="subtitle-wrapper">
     <p class="subtitle has-text-black">Sales Data:</p>
     <div class="parent">
-    <h3 class="description">Please make sure the format of the file is:
-      In the form of a pdf or a document
-    </h3>
-  </div>
-    <form class="margin" action="/action_page.php">
-      <input type="file" id="salesFile" name="salesFilename">
+      <h3 class="description">Please make sure the format of the file is:
+        In the form of a pdf or a document
+      </h3>
+    </div>
+    <form class="margin">
+      <input type="file" id="salesFile" name="salesFilename" (change)="onFileSelected($event, 'sales')">
     </form>
   </div>
-
+  
   <div class="subtitle-wrapper">
     <p class="subtitle has-text-black">Purchasing Data:</p>
     <div class="parent">
-    <h3 class="description">Please make sure the format of the file is:
-      In the form of a pdf or a document
-    </h3>
-  </div>
-    <form class="margin" action="/action_page.php">
-      <input type="file" id="purchasingFile" name="purchasingFilename">
+      <h3 class="description">Please make sure the format of the file is:
+        In the form of a pdf or a document
+      </h3>
+    </div>
+    <form class="margin">
+      <input type="file" id="purchasingFile" name="purchasingFilename" (change)="onFileSelected($event, 'purchasing')">
     </form>
   </div>
-
+  
   <div class="subtitle-wrapper">
     <p class="subtitle has-text-black">Recipe Data:</p>
     <div class="parent">
       <h3 class="description">Please make sure the format of the file is:
-          Recipe name, Dish Price, Ingredient 1 Name, Ingredient 1 Quantity (lbs), Ingredient 2 Name...
+        Recipe name, Dish Price, Ingredient 1 Name, Ingredient 1 Quantity (lbs), Ingredient 2 Name...
       </h3>
-  </div>
-    <form class="margin" action="/action_page.php">
-      <input type="file" id="recipeFile" name="recipeFilename">
+    </div>
+    <form class="margin">
+      <input type="file" id="recipeFile" name="recipeFilename" (change)="onFileSelected($event, 'recipe')">
     </form>
   </div>
+  
 </div>
 
 <div class="center-button">
-<button class="upload-button"(click)="onSubmit()">Upload File</button>
+<button class="upload-button"(click)="onSubmit()">Upload Files</button>
 </div>
+</section>

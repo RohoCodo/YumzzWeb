@@ -139,15 +139,5 @@ exports.signIn = functions.https.onRequest((req, resp) => {
     }
   });
 
-// Assuming you have already initialized Firebase in your client-side code
-// const signUpFunction = firebase.functions().httpsCallable('signUp');
-
-// // Call the Cloud Function with user data
-// signUpFunction({ email: 'user@example.com', password: 'password123', restaurantName: 'Example Restaurant' })
-//   .then((result) => {
-//     console.log(result.data.message);
-//   })
-//   .catch((error) => {
-//     console.error('Error during sign up:', error.message);
-//   });
+  
 
