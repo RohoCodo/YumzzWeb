@@ -8,46 +8,44 @@
 
 <p class="title">File Upload Page</p>
 
-<div class="subtitle-container">
+<div class="subtitle-container"> 
   <div class="subtitle-wrapper">
-    <p class="subtitle has-text-black">Sales Data:</p>
     <div class="parent">
+      <p class="subtitle-has-text-black">Sales Data:</p>
       <h3 class="description">Please make sure the format of the file is:
         In the form of a pdf or a document
       </h3>
+      <form class="margin">
+        <input type="file" id="salesFile" name="salesFilename" (change)="onFileSelected($event, 'sales')">
+      </form>
     </div>
-    <form class="margin">
-      <input type="file" id="salesFile" name="salesFilename" (change)="onFileSelected($event, 'sales')">
-    </form>
   </div>
   
   <div class="subtitle-wrapper">
-    <p class="subtitle has-text-black">Purchasing Data:</p>
     <div class="parent">
+      <p class="subtitle-has-text-black">Purchasing Data:</p>
       <h3 class="description">Please make sure the format of the file is:
         In the form of a pdf or a document
       </h3>
+      <form class="margin">
+        <input type="file" id="purchasingFile" name="purchasingFilename" (change)="onFileSelected($event, 'purchasing')">
+      </form>
     </div>
-    <form class="margin">
-      <input type="file" id="purchasingFile" name="purchasingFilename" (change)="onFileSelected($event, 'purchasing')">
-    </form>
   </div>
   
   <div class="subtitle-wrapper">
-    <p class="subtitle has-text-black">Recipe Data:</p>
     <div class="parent">
+      <p class="subtitle-has-text-black">Recipe Data:</p>
       <h3 class="description">Please make sure the format of the file is:
         Recipe name, Dish Price, Ingredient 1 Name, Ingredient 1 Quantity (lbs), Ingredient 2 Name...
       </h3>
+      <form class="margin">
+        <input type="file" id="recipeFile" name="recipeFilename" (change)="onFileSelected($event, 'recipe')">
+      </form>
     </div>
-    <form class="margin">
-      <input type="file" id="recipeFile" name="recipeFilename" (change)="onFileSelected($event, 'recipe')">
-    </form>
   </div>
-  
 </div>
-
 <div class="center-button">
-<button class="upload-button"(click)="onSubmit()">Upload Files</button>
-</div>
+  <button class="upload-button"(click)="onUpload()">Upload Files</button>
+  </div>
 </section>

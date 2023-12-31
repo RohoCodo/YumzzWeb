@@ -5,6 +5,9 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable, of } from 'rxjs';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { database } from 'firebase-functions/v1/firestore';
+import { match } from 'assert';
+import * as Papa from 'papaparse';
+
 
 
 declare const Module: any;
@@ -27,8 +30,14 @@ interface IngredientQuantAmt {
 }
 
 interface DishsIngredientQuantAmts{
-  name: string,
+  name: string;
   ingredientQuantAmts: IngredientQuantAmt[];
+}
+
+interface ProductIngredSales{
+  productName: string;
+  ingredAmt: number;
+  productSales: string;
 }
 
 @Injectable({
@@ -39,8 +48,19 @@ export class WasmService {
   private isModuleInitialized: boolean = false;
   private cogCalcModule: any; // Add a property to store the loaded WebAssembly module
   recipeData: RecipeData[] = [];
+  productNames: number [] = [];
+  productSales: number [] = [];
+  dishes: string [] = [];
+  cogs: number = 0;
+  dishPrice: GLfloat = 0;
+  optOrderQuant: number = 0;
+  orderFreq: number = 0;
+  reorderPoint: number = 0;
+  ingredients: string [];
+  delIngredients: string [];
   dishIngredientQuantAmts: DishsIngredientQuantAmts;
   ingredientQuantAmtData: IngredientQuantAmt[] = [];
+  ingredProdSales: ProductIngredSales[] = [];
   number$: Observable<number>;
   getIngredientsFileURL = "https://us-central1-virtual-menu-59b9e.cloudfunctions.net/getRecipesTextFile";
   getSalesFileURL = "https://us-central1-virtual-menu-59b9e.cloudfunctions.net/getSalesFile";
@@ -72,49 +92,25 @@ export class WasmService {
     }
   }
 
-  // Define functions to interact with your WebAssembly module
-  public runAnalysis(data: any): any {
-    //get the data frpom Firebase Storage and dispaly the outputs here.
-    // Example: Call a function from the WebAssembly module
-    // return this.cogCalcModule.yourAnalysisFunction(data);
-  }
+  async createProductQuantityMap() {
+    const salesResponse = await this.http.get('assets/sales.csv', { responseType: 'text' }).toPromise(); 
 
-  private getIngredientDataFromServer(dishName: string): string {
-    // Replace 'path/to/your/ingredients.txt' with the actual path in your Firebase Storage
-    // get the ingredients txt returned here
+    await Papa.parse(salesResponse, {
+      header: true,
+      skipEmptyLines: true,
+      complete: (result) => {
+        result.data.forEach((row: any) => {
+          const product = row.Product;
+          const quantity = parseInt(row.Quantity, 10);
 
-    const filePath = 'assets/ingredients.txt'; // Adjust the path accordingly
-    let fileContent: string = '';
-
-    this.http.get(filePath, { responseType: 'text' }).subscribe(
-      (content) => {
-        fileContent = content;
-        console.log("getting file content:");
-        console.log(fileContent);
-        return content;
-      },
-      (error) => {
-        console.error('Error fetching file:', error);
+          if (product && !isNaN(quantity)) {
+            // Add or update the quantity for the product in the map
+            this.productNames.push(product);
+            this.productSales.push(quantity);
+          }
+        });
       }
-    );
-  
-    return null;
-    // const filePath = this.getIngredientsFileURL; // Replace with the actual file path
-    // const call = this.fns.httpsCallable('getRecipesTextFile');
-    // const data$ = call({}); 
-    // console.log(data$);
-    // data$.subscribe(
-    // (downloadURL: string) => {
-    //   console.log(`File download URL: ${downloadURL}`);
-    //   // Handle the download URL as needed
-    //   return downloadURL;
-    // },
-    // (error) => {
-    //   console.error('Error getting file from storage:', error);
-    // }
-    // );
-    // this.http.get
-    // return this.http.get(this.getIngredientsFileURL);
+    });
   }
 
   getFileFromStorage(filePath: string): Observable<any> {
@@ -144,71 +140,6 @@ export class WasmService {
     return false;
   }
 
-
-  private async getQuantAmtDataFromServer(dishName: string) {
-    // Replace 'path/to/your/ingredients.txt' with the actual path in your Firebase Storage
-    const filePath = 'assets/ingredientsQuantAmt.txt'; // Adjust the path accordingly
-    let fileContent: string = '';
-
-    this.http.get(filePath, { responseType: 'text' }).subscribe(
-      (content) => {
-        fileContent = content;
-        //console.log(fileContent);
-        return content;
-      },
-      (error) => {
-        console.error('Error fetching file:', error);
-      }
-    );
-    
-    return null;
-    // const filePath = this.getQuantsAmtsFileURL; // Replace with the actual file path
-
-    // const call = this.fns.httpsCallable('getPurchasingTextFile');
-    // const data$ = call({}); 
-    // console.log(data$);
-    //   data$.subscribe(
-    //   (downloadURL: string) => {
-    //     console.log(`File download URL: ${downloadURL}`);
-    //     // Handle the download URL as needed
-    //     return downloadURL;
-    //   },
-    //   (error) => {
-    //     console.error('Error getting file from storage:', error);
-    //   }
-    // );
-    
-  }
-
-  private async getSalesDataFromServer(dishName: string) {
-    // Replace 'path/to/your/ingredients.txt' with the actual path in your Firebase Storage
-    const filePath = 'assets/sales.csv'; // Adjust the path accordingly
-    let fileContent: string = '';
-
-    this.http.get(filePath, { responseType: 'text' }).subscribe(
-      (content) => {
-        fileContent = content;
-        //console.log(fileContent);
-        return fileContent;
-      },
-      (error) => {
-        console.error('Error fetching file:', error);
-      }
-    );
-    return null;
-    // const filePath = this.getSalesFileURL; // Replace with the actual file path
-    //   this.getFileFromStorage(filePath).subscribe(
-    //   (downloadURL: string) => {
-    //     console.log(`File download URL: ${downloadURL}`);
-    //     // Handle the download URL as needed
-    //     return downloadURL;
-    //   },
-    //   (error) => {
-    //     console.error('Error getting file from storage:', error);
-    //   }
-    // );
-  }
-
 //   // Helper method to read the contents of a text file
 //   private readTextFile(filePath: string): string {
 //     const file = FS.readFile(filePath, { encoding: 'utf8' });
@@ -229,7 +160,8 @@ export class WasmService {
   }
   
   calculateOptimalOrderQuantity(orderCost: number, sales: number, storingCost: number): number {
-    return this.cogCalcModule.calculateOptimalOrderQuantity(orderCost, sales, storingCost);
+    this.optOrderQuant = this.cogCalcModule.calculateOptimalOrderQuantity(orderCost, sales, storingCost)
+    return this.optOrderQuant;
   }
 
   calculateSafetyStock(maxLeadTime: number, averageLeadTime: number, averageSales: number): number {
@@ -237,7 +169,184 @@ export class WasmService {
   }
 
   calculateReorderPoint(safetyStock: number, averageConsumption: number, leadTime: number): number {
-    return this.cogCalcModule.calculateReorderPoint(safetyStock, averageConsumption, leadTime);
+    this.reorderPoint = this.cogCalcModule.calculateReorderPoint(safetyStock, averageConsumption, leadTime)
+    return this.reorderPoint;
+  }
+
+  async getSalesData(){
+    try {
+      const ret = await this.http.get(this.getSalesFileURL, { responseType: 'text' });
+      // console.log(of(ret));
+      ret.subscribe(
+        (response: any) => {
+          console.log(response);
+          return response;
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  }
+
+  async getPurchasingData(){
+    try {
+      const ret = await this.http.get(this.getQuantsAmtsFileURL, { responseType: 'text' });
+      // console.log(of(ret));
+      ret.subscribe(
+        (response: any) => {
+          console.log(response);
+          return response;
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  }
+
+  async getRecipesData(){
+    try {
+      const ret = await this.http.get(this.getIngredientsFileURL, { responseType: 'text' });
+      // console.log(of(ret));
+      ret.subscribe(
+        (response: any) => {
+          console.log(response);
+          return response;
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  }
+
+  async calculateIngredientReorderPoint(ingredName: string){
+    try{
+      const salesResponse = await this.http.get('assets/sales.csv', { responseType: 'text' }).toPromise();
+      const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+      const ingredQuantAmts = await this.http.get('assets/ingredientsQuantAmt.txt', { responseType: 'text' }).toPromise();
+
+      const dishInfo = await this.parseIngredientsTxtData(ingredientsResponse);
+      const purchasingInfo = await this.parseIngredientsQuantAmtTxtData(ingredQuantAmts);
+      const salesInfo = await this.parseSalesCSVData(salesResponse, ingredName, dishInfo);
+
+      // return {productName, ingredAmt/product, productSales}[]
+      // calculate order cost by multiplying ingredAmt/product by sales multiplied by the purchasing cost/purchasing amt
+      const pI = purchasingInfo.find((p) => p.name == ingredName);
+      let orderCost = 0;
+      let prodSales = 0;
+      for(const prod of salesInfo){
+        orderCost += prod.ingredAmt * +prod.productSales * (pI.price/pI.quantity);
+        prodSales += +prod.productSales;
+      }
+      this.calculateReorderPoint(50, prodSales/salesInfo.length, 10);
+    }
+    catch (error){
+      console.error('Error calculating optimal order quantity:', error);
+      throw error; // Rethrow the error for the caller to handle
+    }
+  }
+
+  async deleteDish(dish: string){
+    const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    const dishIngreds = await this.getLineByFirstElem(ingredientsResponse, dish);
+    
+    const lines = ingredientsResponse.split(';');
+    const ind = lines.indexOf(dishIngreds);
+    // lines.filter(line => line !== dishIngreds);
+    lines.splice(ind, 1);
+
+    //upload this to the file location
+
+  }
+
+  async deleteIngredient(ingredient: string, dish: string){
+    const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    const dishIngreds = await this.findLineByFirstElem(ingredientsResponse, dish);
+    console.log(dishIngreds);
+    const lines = ingredientsResponse.split(';');
+    console.log(lines);
+    const ind = dishIngreds.indexOf(ingredient);
+    dishIngreds.splice(ind, 1);
+    dishIngreds.splice(ind, 1);
+    lines[ind] = dishIngreds.join(',');
+    console.log(lines);
+  }
+
+  async addDish(newRecipeName: string, newIngredients: string){
+    let ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    const lines = ingredientsResponse.split(";");
+    ingredientsResponse += "\n" + newRecipeName;
+    ingredientsResponse += "," + newIngredients + ";";
+    console.log(ingredientsResponse);
+  }
+
+  async getDishNames(){
+    //get all the dish names in the ingredients.txt file
+    const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    // const dishInfo = await this.parseIngredientsTxtData(ingredientsResponse);
+    const lines = ingredientsResponse.split(';');
+    console.log(lines)
+    for (const line of lines){
+      const values = line.split(',');
+      if(values[0].length > 2){
+        const dName = values[0];
+        this.dishes.push(dName);
+      }
+    }
+  }
+
+  async changeRecipeName(newDishName: string, oldDishName: string){
+    const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    const dishIngreds = await this.findLineByFirstElem(ingredientsResponse, oldDishName);
+    
+    dishIngreds[0] = newDishName;
+    console.log(dishIngreds);
+    //need to upload the file
+  }
+
+  async addIngredients(newIngredients: string, dishName: string){
+    const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    const dishIngreds = await this.findLineByFirstElem(ingredientsResponse, dishName);
+
+    const ingreds = newIngredients.split(',');
+    //need to check the inputs
+    for(const ingred of ingreds){
+      dishIngreds.push(ingred);
+    }
+  }
+
+  async getIngredients(dishName: string){
+    const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    const dishIngreds = await this.findLineByFirstElem(ingredientsResponse, dishName);
+    console.log(dishIngreds);
+    let ingreds = [];
+    for (let i = 2; i < dishIngreds.length; i += 2) {
+      const ingred = dishIngreds[i];
+      ingreds.push(ingred);
+    }
+    
+    this.ingredients = ingreds;
+  }
+
+  async getDelIngredients(dishName: string){
+    const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+    const dishIngreds = await this.findLineByFirstElem(ingredientsResponse, dishName);
+    console.log(dishIngreds);
+    let ingreds = [];
+    for (let i = 2; i < dishIngreds.length; i += 2) {
+      const ingred = dishIngreds[i];
+      ingreds.push(ingred);
+    }
+
+    this.delIngredients = ingreds;
   }
 
   calculateProfitMargin(fileName: string, dishPrice: number, dishName: string, more: boolean): Promise<number> {
@@ -256,28 +365,23 @@ export class WasmService {
   private parseIngredientsTxtData(ingredientsTxtData: string){
     const lines = ingredientsTxtData.split(';');
     const ingredients: Ingredient[] = [];
-    console.log("string");
-    console.log(ingredientsTxtData); // there is nothing in this string
-    console.log("lines");
-    console.log(lines);
 
     lines.forEach(line => {
       const values = line.split(',');
+      if(values.length > 1 && values[0].length > 2){
 
-      const name = values[0];
-      const dishPrice = parseFloat(values[1]);
-      console.log("get name and price")
-      console.log(name);
-      console.log(dishPrice);
+        const name = values[0];
+        const dishPrice = parseFloat(values[1]);
 
-      for (let i = 2; i < values.length; i += 2) {
-        const ingredientName = values[i];
-        const ingredientQuantity = parseFloat(values[i + 1]);
+        for (let i = 2; i < values.length; i += 2) {
+          const ingredientName = values[i];
+          const ingredientQuantity = parseFloat(values[i + 1]);
 
-        ingredients.push({ name: ingredientName, quantity: ingredientQuantity });
+          ingredients.push({ name: ingredientName, quantity: ingredientQuantity });
+        }
+        
+        this.recipeData.push({ name, dishPrice, ingredients });
       }
-      
-      this.recipeData.push({ name, dishPrice, ingredients });
     });
 
     return this.recipeData;
@@ -288,15 +392,87 @@ export class WasmService {
 
     lines.forEach(line => {
       const values = line.split(',');
+      if(values.length > 1 && values[0].length > 2){
+        const ingredientName = values[0];
+        const quantity = parseFloat(values[1]);
+        const price = parseFloat(values[2]);
 
-      const ingredientName = values[0];
-      const quantity = parseFloat(values[1]);
-      const price = parseFloat(values[2]);
-
-      this.ingredientQuantAmtData.push({ name: ingredientName, quantity, price });
+        this.ingredientQuantAmtData.push({ name: ingredientName, quantity, price });
+      }
     });
     return this.ingredientQuantAmtData
   }
+
+  private async parseSalesCSVData(salesCSV: string, ingredName: string, dishInfo: RecipeData[]){
+    // this.cogCalcModule.search_dish_sales_by_name(dishName, 'assets/ingredients.txt');
+    // Remove null bytes
+    const cleanedContent = salesCSV.replace(/\0/g, '');
+
+    // Create a stringstream from cleaned content starting from row 4
+    const contentLines = cleanedContent.split('\n').slice(3);
+    const matchingRecipes = dishInfo.filter((recipe) => recipe.ingredients.some((ingredient) => ingredient.name === ingredName));
+    
+    //go through each matching Recipe and find the line with the corresponding sales data
+    for(const recipe of matchingRecipes){
+      const line = this.findLineByFirstElement(cleanedContent, recipe.name);
+      const [firstColumn, ...otherColumns] = line.split(',');
+      if (firstColumn.trim().length > 0) {
+        const prodSales = otherColumns[0];
+        this.ingredProdSales.push({productName: prodSales, ingredAmt: recipe.ingredients.find((i) => i.name = ingredName).quantity, productSales: prodSales});
+      }
+    }
+    // return {productName, ingredAmt/product, productSales}
+    return this.ingredProdSales;
+  }
+
+  findLineByFirstElement(csvContent: string, targetElement: string): string | null {
+    // Split the CSV content into lines
+    const lines = csvContent.split(';\n');
+  
+    // Iterate through the lines
+    for (const line of lines) {
+      // Split the line into columns based on the CSV delimiter (e.g., comma)
+      const columns = line.split(',');
+  
+      // Check if the first column matches the target element
+      if (columns.length > 0 && columns[0].trim() === targetElement) {
+        return line; // Return the entire line
+      }
+    }
+  }
+
+  findLineByFirstElem(txtContent: string, targetElement: string): string [] | null {
+    // Split the CSV content into lines
+    const lines = txtContent.split(';\n');
+  
+    // Iterate through the lines
+    for (const line of lines) {
+      // Split the line into columns based on the CSV delimiter (e.g., comma)
+      const ingreds = line.split(',');
+      const i = ingreds[0];
+
+      if (i.trim() == targetElement.trim()) {
+        return ingreds;
+      }
+    }
+  }
+
+  getLineByFirstElem(txtContent: string, targetElement: string): string | null {
+    // Split the CSV content into lines
+    const lines = txtContent.split(';\n');
+  
+    // Iterate through the lines
+    for (const line of lines) {
+      // Split the line into columns based on the CSV delimiter (e.g., comma)
+      const ingreds = line.split(',');
+      const i = ingreds[0];
+
+      if (i.trim() == targetElement.trim()) {
+        return line;
+      }
+    }
+  }
+
 
   private calculateSingleIngredientDirectCost(ingredAmt: number, ingredPrice: number, ingredQuant: number): number {
     // Implement your cost calculation logic here
@@ -304,87 +480,99 @@ export class WasmService {
     return (ingredAmt * (ingredQuant / ingredPrice));
   }
 
-  calculateIngredientDirectCostfromData(dishName: string): Observable<number> {
-    // trying to make promise work
-    const ingredientData = this.getIngredientDataFromServer(dishName);
-  
-    // This line will "stall" the execution until the promise is resolved
+  async calculateIngredientOptimalOrderQuantity(ingredName){
+    try{
+      const salesResponse = await this.http.get('assets/sales.csv', { responseType: 'text' }).toPromise();
+      const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+      const ingredQuantAmts = await this.http.get('assets/ingredientsQuantAmt.txt', { responseType: 'text' }).toPromise();
 
-    // end of trial
-    
-    // Simulating data retrieval (replace with your actual data retrieval logic)
-    //let ingredientData = this.getIngredientDataFromServer(dishName);
-    const quantAmtRequest = this.getQuantAmtDataFromServer(dishName);
+      const dishInfo = await this.parseIngredientsTxtData(ingredientsResponse);
+      const purchasingInfo = await this.parseIngredientsQuantAmtTxtData(ingredQuantAmts);
+      const salesInfo = await this.parseSalesCSVData(salesResponse, ingredName, dishInfo);
 
-    let dishInfo = this.parseIngredientsTxtData(ingredientData);
-    let purchasingInfo;
-    // this.parseIngredientsQuantAmtTxtData(quantAmtRequest);
-
-    // ingredientData.then((result) => {
-    //   dishInfo = result;
-    //   //dishInfo = this.parseIngredientsTxtData(result); 
-    //   console.log(dishInfo);
-    //   console.log("after logged value");
-    // })
-    // dishInfo = await ingredientData;
-    // console.log(dishInfo);
-    // console.log("dish info logged");
-
-    quantAmtRequest.then((result) => {
-      purchasingInfo = this.parseIngredientsQuantAmtTxtData(result);
-    })
-
-    let costs = 0;
-
-    const ingredients = this.combineArrays(purchasingInfo,dishInfo);
-
-    for (const ingredient of ingredients) {
-      const ingredAmt = ingredient.amount;
-      const ingredQuant = ingredient.quantity;
-      const ingredPrice = ingredient.price;
-
-      const cost = this.calculateSingleIngredientDirectCost(ingredAmt, ingredPrice, ingredQuant);
-      costs += cost;
+    // return {productName, ingredAmt/product, productSales}[]
+    // calculate order cost by multiplying ingredAmt/product by sales multiplied by the purchasing cost/purchasing amt
+    const pI = purchasingInfo.find((p) => p.name == ingredName);
+    let orderCost = 0;
+    let prodSales = 0;
+    for(const prod of salesInfo){
+      orderCost += prod.ingredAmt * +prod.productSales * (pI.price/pI.quantity);
+      prodSales += +prod.productSales;
     }
-
-    console.log(costs);
-
-    return of(costs);
+    this.calculateOptimalOrderQuantity(orderCost, prodSales, 10);
+    }
+    catch (error){
+      console.error('Error calculating optimal order quantity:', error);
+      throw error; // Rethrow the error for the caller to handle
+    }
   }
 
-  combineArrays(arr1: any[], arr2: any[]): any[] {
-    if (!arr1) {
-      // Handle the case where arr1 is undefined or null
-      alert("arr1 dont exist");
-      return [];
-    }
-  
-    return arr1.map((ingredient1) => {
-      const matchingIngredient = arr2.find((ingredient2) => ingredient2.name === ingredient1.name);
-  
-      if (matchingIngredient) {
-        // Combine properties from both arrays
-        return {
-          name: ingredient1.name,
-          quantity: ingredient1.quantity,
-          price: ingredient1.price, // You can choose to combine prices differently if needed
-          amount: matchingIngredient.price,
-        };
-      } else {
-        // If no matching ingredient is found in the second array
-        return ingredient1;
-      }
-    });
-  };
+  async calculateOrderingFreq(ingredName){
+    try{
+      const salesResponse = await this.http.get('assets/sales.csv', { responseType: 'text' }).toPromise();
+      const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+      const ingredQuantAmts = await this.http.get('assets/ingredientsQuantAmt.txt', { responseType: 'text' }).toPromise();
 
-  // private calculateIngredientDirectCost(dishName: string): Observable<number> {
-  //   // Make HTTP requests to get ingredient data from text files
-  //   //need to change this
-  //   return this.calculateIngredientDirectCostFromData(dishName);
-  // }
+      const dishInfo = await this.parseIngredientsTxtData(ingredientsResponse);
+      const purchasingInfo = await this.parseIngredientsQuantAmtTxtData(ingredQuantAmts);
+      const salesInfo = await this.parseSalesCSVData(salesResponse, ingredName, dishInfo);
+
+      // return {productName, ingredAmt/product, productSales}[]
+      // calculate order cost by multiplying ingredAmt/product by sales multiplied by the purchasing cost/purchasing amt
+      const pI = purchasingInfo.find((p) => p.name == ingredName);
+      let orderCost = 0;
+      let prodSales = 0;
+      for(const prod of salesInfo){
+        orderCost += prod.ingredAmt * +prod.productSales * (pI.price/pI.quantity);
+        prodSales += +prod.productSales;
+      }
+      this.calculateOrderingFrequency(prodSales,orderCost, 10);
+    }
+    catch (error){
+      console.error('Error calculating optimal order quantity:', error);
+      throw error; // Rethrow the error for the caller to handle
+    }
+  }
+
+  async calculateIngredientDirectCostfromData(dishName: string): Promise<Observable<number>> {
+    //unwrap promise before sending it
+    // trying to make promise work
+    // console.log("calculating");
+    try{
+      const ingredientsResponse = await this.http.get('assets/ingredients.txt', { responseType: 'text' }).toPromise();
+      const dishInfo = await this.parseIngredientsTxtData(ingredientsResponse);
+      const dishIn = dishInfo.find((recipe) => recipe.name === dishName);
+      console.log(dishIn);
+      this.dishPrice = dishIn.dishPrice;
+
+      // Fetch ingredientsQuantAmt.txt
+      const purchasingInfoResponse = await this.http.get('assets/ingredientsQuantAmt.txt', { responseType: 'text' }).toPromise();
+      const purchasingInfo = await this.parseIngredientsQuantAmtTxtData(purchasingInfoResponse);
+
+      let costs = 0;
+      let ingredient: Ingredient;
+      for(ingredient of dishIn.ingredients){
+        const ingredQA = purchasingInfo.find((ingredQuantAmt) => ingredQuantAmt.name == ingredient.name);
+        console.log(ingredQA); 
+        const ingredAmt = ingredient.quantity;
+        const ingredQuant = ingredQA.quantity;
+        const ingredPrice = ingredQA.price; 
+
+        const cost = await this.calculateSingleIngredientDirectCost(ingredAmt, ingredPrice, ingredQuant);
+        costs += cost;
+      }
+      this.cogs = costs;
+      return of(costs);
+    } 
+    catch (error) {
+      console.error('Error calculating cost:', error);
+      throw error; // Rethrow the error for the caller to handle
+    }
+  }
 
   calculateOrderingFrequency(demandRate: number, orderingCost: number, holdingCost: number): number {
-    return this.cogCalcModule.calculateOrderingFrequency(demandRate, orderingCost, holdingCost);
+    this.orderFreq = this.cogCalcModule.calculateOrderingFrequency(demandRate, orderingCost, holdingCost)
+    return this.orderFreq;
   }
 
   dishExistsInFile(fileContent: string, targetWords: string): boolean {

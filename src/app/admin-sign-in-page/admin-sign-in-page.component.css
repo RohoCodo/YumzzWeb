@@ -15,6 +15,9 @@
 .checks{
   display: flex;
   align-items: center;
+  width: auto; /* Allow the width to adjust based on content */
+  max-width: 100%; /* Limit the maximum width to the container's width */
+  box-sizing: border-box;
 }
 .checked {
   width: 1.2em; /* Adjust the width of the checkbox */

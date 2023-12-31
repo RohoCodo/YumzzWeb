@@ -42,22 +42,24 @@ declare var $ : any;
     ingredientsQuantAmtTxtData: string = ''; // Text of Text file gotten from firebase
     recipeData: RecipeData[] = [];
     ingredientQuantAmtData: IngredientQuantAmt[] = [];
-    profitabilityResult; // Variable to store the result
-    reorderPointResult;
-    safetyStockResult;
+    profitability; // Variable to store the result
+    reorderPoint;
+    safetyStock;
     optimalorderQuantity;
+    orderFreq;
     cogsResult;
 
 
     constructor(private wasmService: WasmService, private storage: AngularFireStorage) {
     }
     // Replace these arrays with your actual data
-    dishNames = ["Dish1", "Dish2", "Dish3", "Dish4", "Dish5"];
-    foodCosts = [10, 15, 12, 8, 20];
+    // calculate for all the dishes and get arrays of each point
+    dishNames = [];
+    foodCosts = [];
     orderingFrequency = [2, 3, 1, 4, 2];
     reorderAlert = [false, true, false, true, false];  // Replace with actual boolean values
     runningLowReminder = [true, false, true, false, true];  // Replace with actual boolean values
-    reorderPoint = [30, 25, 35, 20, 40];
+    // reorderPoint = [30, 25, 35, 20, 40];
     //get data from the storage in Firebase:
     // this.getDataFromFirebaseStorage('path/to/your/data');
   
@@ -66,27 +68,13 @@ declare var $ : any;
     orderingFrequencyChart: any;
     reorderAlertChart: any;
     runningLowReminderChart: any;
-    reorderPointChart: any;
+    // reorderPointChart: any;
   
-    ngOnInit() {
-      const filePath = 'gs://virtual-menu-59b9e.appspot.com/Restaurant/Kathmandu-Cuisine/Recipes/ingredients.txt'; // Replace with the actual file path
-      this.getFileFromStorage(filePath).subscribe(
-      (downloadURL: string) => {
-        console.log(`File download URL: ${downloadURL}`);
-        // Handle the download URL as needed
-      },
-      (error) => {
-        console.error('Error getting file from storage:', error);
-      }
-    );
-      // Create chart instances with your data
-
-        // Example: Use the WasmService to run your C++ analysis
-      
-      // const result = this.wasmService.runAnalysis(this.foodCostsChart);
-      // console.log('Analysis Result:', result);
-      
-      // this.foodCostsChart = this.createBarChart('foodCostsChart', 'Food Costs', this.foodCosts, 'blue');
+    async ngOnInit() {
+      const prods = await this.wasmService.createProductQuantityMap();
+      this.foodCosts = this.wasmService.productSales;
+      this.dishNames = this.wasmService.productNames;
+      this.foodCostsChart = this.createBarChart('foodCostsChart', 'Food Costs', this.foodCosts, 'blue');
       // this.orderingFrequencyChart = this.createBarChart('orderingFrequencyChart', 'Ordering Frequency', this.orderingFrequency, 'green');
       // this.reorderAlertChart = this.createBarChart('reorderAlertChart', 'Reorder Alert', this.reorderAlert.map(alert => alert ? 1 : 0), 'red');
       // this.runningLowReminderChart = this.createBarChart('runningLowReminderChart', 'Running Low Reminder', this.runningLowReminder.map(reminder => reminder ? 1 : 0), 'orange');
@@ -143,37 +131,49 @@ declare var $ : any;
       return false;
     }
 
-    calculateProfitMargin() {  
-      this.profitabilityResult = 86;
+    async calculateProfitMargin() {  
+      // this.profitabilityResult = 86;
       // console.log(this.dishName);
-      // this.wasmService.calculateIngredientDirectCostfromData(this.dishName.replace(/\s+/g, '-')).subscribe(
-      //   (result) => {
-      //     this.profitabilityResult = result;
-      //   },
-      //   (error) => {
-      //     console.error('Error calculating profitability:', error);
-      //     // Handle errors as needed
-      //   }
-      // );
+      (await this.wasmService.calculateIngredientDirectCostfromData(this.dishName.replace(/\s+/g, '-'))).subscribe(
+        (result) => {
+          console.log("Why yes" + this.profitability);
+          this.profitability = this.wasmService.cogs;
+        },
+        (error) => {
+          console.error('Error calculating profitability:', error);
+          // Handle errors as needed
+        }
+      );
     }
 
-    calculateCOGS(){
-      this.cogsResult = 2.99;
+    async calculateCOGS(){
+      if(this.wasmService.cogs != 0){
+        this.cogsResult = (this.wasmService.cogs/this.wasmService.dishPrice);
+      }else{
+        (await this.wasmService.calculateIngredientDirectCostfromData(this.dishName.replace(/\s+/g, '-'))).subscribe(
+          (result) => {
+            console.log("Why yes" + this.cogsResult);
+            this.cogsResult = result;
+          },
+          (error) => {
+            console.error('Error calculating profitability:', error);
+            // Handle errors as needed
+          }
+        );
+      }
     }
 
-    calculateOptimalOrderQuantity() {  
-      console.log(this.dishName);
-      this.optimalorderQuantity = 0;
-      // this,this.wasmService.calculateOptimalOrderQuantity()
-      // this.wasmService.calculateIngredientDirectCostfromData(this.dishName.replace(/\s+/g, '-')).subscribe(
-      //   (result) => {
-      //     this.optimalorderQuantity = result;
-      //   },
-      //   (error) => {
-      //     console.error('Error calculating profitability:', error);
-      //     // Handle errors as needed
-      //   }
-      // );
+    async calculateOptimalOrderQuantity() {  
+      //get the sales quantity for all dishes with this ingredient which = sales -> sales.csv filtered to find dishes with certain ingredients
+      //get the amount of that ingredient in that dish -> ingredientAmtQuant.txt
+      //orderCost = purchasing cost of that ingredient -> ask Santosh about this
+      // % of sq footage of restaurant dedicated to storage * rental rate
+      if(this.wasmService.cogs != 0){
+        this.cogsResult = (this.wasmService.cogs/this.wasmService.dishPrice);
+      }else{
+        await this.wasmService.calculateIngredientOptimalOrderQuantity(this.ingredient);
+        this.optimalorderQuantity = this.wasmService.optOrderQuant;
+      }
     }
   
     // Method to handle button click
@@ -186,11 +186,23 @@ declare var $ : any;
       // Handle the response
     }
 
-    calculateSafetyStock(){
-      
+    async calculateOrderingFreq(){
+      if(this.wasmService.orderFreq != 0){
+      }else{
+        await this.wasmService.calculateOrderingFreq(this.ingredient);
+        this.orderFreq = this.wasmService.orderFreq;
+      }
     }
 
-    calculateReorderPoint(){
+    async calculateReorderPoint(){
+      if(this.wasmService.reorderPoint != 0){
+      }else{
+        await this.wasmService.calculateIngredientReorderPoint(this.ingredient);
+        this.reorderPoint = this.wasmService.reorderPoint;
+      }
+    }
+
+    calculateSafetyStock(){
 
     }
     

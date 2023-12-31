@@ -12,25 +12,6 @@
     <div class="hero-head">
       <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
       <app-navigation></app-navigation>
-      <!-- <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" routerLink="/home" routerLinkActive="active">
-            <p class="title"> Yumzz</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-          <a class="navbar-item ml-auto" routerLink="/admin-fileupload" routerLinkActive="active">
-            <p class="nav-item">File Uploads</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-        </div>
-        <div class="navbar-selection ml-auto">
-            <a class="navbar-item" routerLink="/admin-recipes" routerLinkActive="active">
-              <p class="nav-item">Recipe Management</p>
-            </a>
-          </div>
-      </nav> -->
     </nav>
     <h1 class="homepageTitle" style="font-size: 3.6rem;">Admin Homepage</h1>
       <router-outlet></router-outlet>
@@ -50,12 +31,16 @@
               
                   <div class="button-container">
                     <button class="button" (click)="calculateProfitMargin()">Calculate Profitability</button>
-                    <div class="output-box" *ngIf="profitabilityResult !== null">Profitability Result: {{ profitabilityResult }} %</div>
+                    <div class="output-box" *ngIf="profitability !== null">Profitability Result: {{ profitability }} %</div>
                   </div>
               
                   <div class="button-container">
                     <button class="button" (click)="calculateCOGS()">Calculate COGS</button>
                     <div class="output-box" *ngIf="cogsResult !== null">COGS Result: ${{ cogsResult }}</div>
+                  </div>
+                  <br>
+                  <div class="bcg-matrix-graph">
+                    <app-bcg-matrix></app-bcg-matrix>
                   </div>
                 </div>
               
@@ -73,12 +58,12 @@
               
                   <div class="button-container">
                     <button class="button" (click)="calculateSafetyStock()">Calculate Safety Stock</button>
-                    <div class="output-box" *ngIf="safetyStockResult !== null">Safety Stock Result: {{ safetyStockResult }}</div>
+                    <div class="output-box" *ngIf="safetyStock !== null">Safety Stock Result: {{ safetyStock }}</div>
                   </div>
               
                   <div class="button-container">
                     <button class="button" (click)="calculateReorderPoint()">Calculate Reorder Point</button>
-                    <div class="output-box" *ngIf="reorderPointResult !== null">Reorder Point Result: {{ reorderPointResult }}</div>
+                    <div class="output-box" *ngIf="reorderPoint !== null">Reorder Point Result: {{ reorderPoint }}</div>
                   </div>
                 </div>
               </div>              

@@ -2,69 +2,84 @@
     <div class="hero-head">
       <nav class="navbar is-transparent px-6" role="navigation" aria-label="main navigation">
         <app-navigation></app-navigation>
-
-        <!-- <div class="navbar-brand">
-          <a class="navbar-item" routerLink="/home" routerLinkActive="active">
-            <p class="title"> Yumzz</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-          <a class="navbar-item ml-auto" routerLink="/admin-fileupload" routerLinkActive="active">
-            <p class="nav-item">File Upload</p>
-          </a>
-        </div>
-        <div class="navbar-selection ml-auto">
-          <a class="navbar-item" routerLink="/admin-homepage" routerLinkActive="active">
-            <p class="nav-item">Statistics</p>
-          </a>
-        </div> -->
-        <!-- <div class="navbar-selection ml-auto">
-            <a class="navbar-item" routerLink="/privacy" routerLinkActive="active">
-              <p class="nav-item">Recipe Management</p>
-            </a>
-          </div> -->
       </nav>
       <h1 class="RecipeManTitle" style="font-size: 3.6rem;">Recipe Management</h1>
-      <!-- <router-outlet></router-outlet> -->
+      <router-outlet></router-outlet>
     <div>
-      <!-- buttons.component.html -->
-x
-  <div class="hero-body">
-    <!-- File Operations Inputs -->
-    <div class="form-group">
-      <label for="filename">File Name:</label>
-      <input type="text" class="form-control" id="filename" [(ngModel)]="filename" placeholder="Enter file name">
-    </div>
-
-    <div class="form-group">
-      <label for="newContent">New Content:</label>
-      <textarea class="form-control" id="newContent" [(ngModel)]="newContent" placeholder="Enter new content"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="recipeName">Recipe Name:</label>
-      <input type="text" class="form-control" id="recipeName" [(ngModel)]="recipeName" placeholder="Enter recipe name">
-    </div>
-
-    <!-- File Operations Buttons -->
-    <!-- <div class="file-operations"> -->
-      <!-- <h2>File Operations</h2> -->
-
-      <!-- <button class="button" (click)="readFile()">Read File</button> -->
-
-      <!-- ... Other buttons ... -->
-
-      <!-- <h2>Recipe Operations</h2> -->
-
-      <button class="button" (click)="createRecipe()">Create Recipe</button>
+    <div class="hero-body">
+      <!-- File Operations Inputs -->
+      <div class="buttonContainer">
+        <div class="column">
+          <h2 class="RecipeManButton">Edit Recipes</h2>
+          <div class="form-group">
+            <label for="recipeName">Select Existing Recipe:</label>
+          </div>
+          <div class="form-group">
+            <select [(ngModel)]="recipeName">
+              <br>
+              <option *ngFor="let value of recipeNames" class="selectRecipe" [value]="value">{{ value }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="newContent">New Recipe Name:</label>
+            <br>
+            <textarea class="form-control" id="newRecipeName" [(ngModel)]="editNewRecipeName" placeholder="Enter Recipe Name"></textarea>
+          </div>
+          <button class="button" (click)="editRecipeName()">Edit Recipe Name
+          </button>
+          <br>
+          <div class="form-control">
+            <label for="newContent">Enter new Ingredients:</label>
+            <!-- calculate the ingredient quantity using purchasing data -->
+            <textarea class="form-input" id="editNewIngredients" [(ngModel)]="editNewIngredients" placeholder="Enter ingredients - Ingredient Name, Ingredient Quantity"></textarea>
+          </div>
+          <button class="button" (click)="editRecipeIngredients()">Add Ingredients</button>
+        </div>
       
-      <button class="button" >Edit Recipe</button>
+        <div class="column">
+          <h2 class="RecipeManButton">Create Recipes</h2>
+              <div class="form-group">
+                <label for="newRecipeName">New Recipe Name:</label>
+                <br>
+                <textarea class="form-control" id="newRecipeName" [(ngModel)]="newRecipeName" placeholder="Enter Recipe Name"></textarea>
+              </div>
+              <div class="form-control">
+                <label for="newContent">Ingredients:</label>
+                <textarea class="form-input" id="newContent" [(ngModel)]="createNewIngredients" placeholder="Enter ingredients - Ingredient Name, Ingredient Quantity"></textarea>
+              </div>
+              <label class="checks">
+                <input type="checkbox" checked="checked" class="checked" cols="20" rows="4"> <h1 class="remem"> Quantites Entered </h1>
+              </label>
+              <button class="button" (click)="addDish()">Create Recipe</button>
+              <br>
+            <br>
+        </div>
 
-      <!-- ... Other buttons ... -->
-    <!-- </div> -->
-
-    <ng-template #fileOperationsTemplate>
-      <!-- Use this template if conditions are not met -->
-    </ng-template>
-  </div>
-<!-- </section> -->
+        <div class="column">
+          <h2 class="RecipeManButton">Delete Recipes</h2>
+          <div class="form-group">
+            <label for="deleteRecipeName">Select Existing Recipe:</label>
+          </div>
+          <div class="form-group">
+            <select [(ngModel)]="deleteRecipeName" (change)="getDeleteIngredients()">
+              <br>
+              <option *ngFor="let value of recipeNames" class="selectRecipe" [value]="value">{{ value }}</option>
+            </select>
+          </div>
+          <button class="button" (click)="deleteRecipe()" >Delete Recipe</button>
+          <br>
+          <div class="form-group">
+            <label for="recipeName">Select Ingredient:</label>
+          </div>
+          <div class="form-group">
+            <select [(ngModel)]="selectedIngred">
+              <option *ngFor="let value of delIngredNames" class="selectIngredient" [value]="value">{{ value }}</option>
+            </select>
+          </div>
+          <button class="button" (click)="deleteIngredient()">Delete Ingredient</button>
+          <br>
+        </div>
+        <!-- <ng-template #fileOperationsTemplate>
+        </ng-template> -->
+      </div>
+    </div>

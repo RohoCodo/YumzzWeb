@@ -11,6 +11,7 @@ import {AdminHomePageComponent} from './admin-homepage/admin-homepage.component'
 import {AdminRecipesComponent} from './admin-recipes/admin-recipes.component';
 import { NavigationComponent } from './navigation/navigation.component'; // Import the navigation component
 import { NavigationLandingPageComponent } from './navigation-landing-page/navigation-landing-page.component';
+import { AdminRecipesNavComponent } from './admin-recipes-nav/admin-recipes-nav.component';
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path : 'admin-recipes', component: AdminRecipesComponent},
   {path: 'app-navigation', component: NavigationComponent},
   {path: 'app-navigation-landing-page', component: NavigationLandingPageComponent},
+  {path: 'admin-recipes-nav', component: AdminRecipesNavComponent},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 

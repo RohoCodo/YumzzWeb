@@ -1,7 +1,6 @@
-p{
+/* p{
     font-size: 20px;
-    margin-left: 80px; 
-}
+} */
 
 .nav-item{
     font-size: 20px;
@@ -11,7 +10,7 @@ p{
 .title{
     font-size: 30px;
     text-align: center;
-    margin-top: -10%;
+    /* margin-top: -20%; */
 }
 
 .file-upload{
@@ -19,9 +18,11 @@ p{
     color: #616060;
 }
 
-.margin {
+/* .margin {
     margin: 80px;
-}
+    margin-left:40px;
+    text-align: center;
+} */
 
 body {
     display: flex;
@@ -33,21 +34,31 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: -10%;
-  }
+    margin-bottom: 10%;
+  } 
 
-  .subtitle {
-    margin-right: 10px; /* Adjust the margin as needed */
-  }
+  /* .subtitle {
+    margin-right: 10px; 
+  } */
 
-  .file-upload {
-    margin-right: 10px; /* Adjust the margin as needed */
-  }
+  /* .file-upload {
+    margin-right: 10px; 
+  } */
 
   .upload-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+  }
+
+  .subtitle-wrapper{
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-left: 40px;
+    margin-right: 40px;
   }
   
   .upload-button {
@@ -60,7 +71,6 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: 100px;
-
   }
   
   .upload-button:hover {
@@ -71,16 +81,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px; /* Adjust the margin as needed */
+    margin-top: 20px; 
   }
   .parent {
     padding-left:5px;
     overflow:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    margin-left: 80px;
     /* background-color:blue; */
   }
 
   .center {
     text-align:center;
     overflow:auto;
-    /* background-color:red; */
+    background-color:red;
+  }
+
+  /* .subtitle-has-text-black{
+    text-align: center;
+  } */
+
+  .description{
+    text-align: center;
+    width: 56%;
+    height: 100%;
   }

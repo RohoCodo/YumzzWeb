@@ -25,6 +25,9 @@ import { FileUploadPageComponent } from './file-upload-page/file-upload-page.com
 import { WasmService } from './services/wasm.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NavigationLandingPageComponent } from './navigation-landing-page/navigation-landing-page.component';
+import { BcgMatrixComponent } from './bcg-matrix/bcg-matrix.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { AdminRecipesNavComponent } from './admin-recipes-nav/admin-recipes-nav.component';
 
 // import { FileUploadService } from './services/file-upload.service';
 // import { FileUploadComponent } from './components/file-operation/file-operation.component';
@@ -33,7 +36,7 @@ import { NavigationLandingPageComponent } from './navigation-landing-page/naviga
 
 
 @NgModule({
-  declarations: [AppComponent, FileUploadPageComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent, ForgotPasswordPageComponent, AdminHomePageComponent, AdminRecipesComponent, NavigationComponent, NavigationLandingPageComponent],
+  declarations: [AppComponent, FileUploadPageComponent, FoodWastePageComponent, HomepageComponent, PrivacyPolicyComponent, SignInAdminPageComponent, SignUpAdminPageComponent, ForgotPasswordPageComponent, AdminHomePageComponent, AdminRecipesComponent, NavigationComponent, NavigationLandingPageComponent, BcgMatrixComponent, AdminRecipesNavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,6 +47,7 @@ import { NavigationLandingPageComponent } from './navigation-landing-page/naviga
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     ReactiveFormsModule,
+    HighchartsChartModule,
   ],
   providers: [AngularFirestore, FileOperationComponent, FileService, WasmService],
   bootstrap: [AppComponent],
